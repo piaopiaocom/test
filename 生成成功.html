@@ -1,0 +1,1730 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>生成成功</title>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #0f172a;
+      --sub: #64748b;
+      --line: #e2e8f0;
+      --primary: #f6a202;
+      --on-primary-text: #000000;
+      --primary-gradient: linear-gradient(135deg, #ffac11 0%, #ffbf1b 100%);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: #ffffff;
+      color: var(--text);
+      font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    }
+    .shell {
+      width: 390px;
+      height: 844px;
+      margin: 16px auto;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background: #fff;
+      overflow: hidden;
+      box-shadow: 0 16px 42px rgba(15, 23, 42, 0.12);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    .shell-scroll {
+      flex: 1;
+      overflow-y: auto;
+      overflow-x: visible;
+      padding-bottom: 80px;
+      box-sizing: border-box;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    .shell-scroll::-webkit-scrollbar {
+      display: none;
+    }
+    .mini-top {
+      background: #fff;
+      z-index: 3;
+    }
+    .status-bar {
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 10px;
+      font-size: 12px;
+      line-height: 17px;
+      color: #1e293b;
+    }
+    .status-icons { display: flex; gap: 6px; align-items: center; }
+    .dot { width: 6px; height: 6px; border-radius: 50%; background: #0f172a; }
+    .signal {
+      width: 12px; height: 8px;
+      border: 1.4px solid #0f172a;
+      border-radius: 2px;
+      position: relative;
+    }
+    .signal::after {
+      content: "";
+      position: absolute;
+      right: -3px; top: 2px;
+      width: 2px; height: 3px;
+      background: #0f172a;
+      border-radius: 1px;
+    }
+    .nav-bar {
+      height: 44px;
+      display: grid;
+      grid-template-columns: 44px 1fr 24px;
+      align-items: center;
+      padding: 0 10px;
+    }
+    .back-btn {
+      width: 44px;
+      height: 44px;
+      min-width: 44px;
+      min-height: 44px;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      position: relative;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+    .back-btn::before {
+      content: "";
+      display: block;
+      width: 14px;
+      height: 18px;
+      flex-shrink: 0;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='18' viewBox='0 0 14 18' fill='none'%3E%3Cpath d='M10 3L4.5 9L10 15' stroke='%23334155' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")
+        no-repeat center / contain;
+    }
+    /* 步骤条与 上传素材 一致；本页为第 2 步（预览结果仍属预览支付环节） */
+    .steps-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 0 20px;
+      background: #fff;
+      position: relative;
+    }
+    .step-item {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      gap: 2px;
+    }
+    .step-item::after {
+      content: "";
+      position: absolute;
+      top: 14px;
+      left: 50%;
+      width: 100%;
+      height: 2px;
+      transform: translateX(0);
+      background-image: radial-gradient(circle, #e2e8f0 1px, transparent 1px);
+      background-size: 6px 2px;
+      z-index: 0;
+    }
+    .step-item:last-child::after {
+      display: none;
+    }
+    .step-item.done::after,
+    .step-item.active::after {
+      background-image: radial-gradient(circle, var(--primary) 1px, transparent 1px);
+    }
+    /* 所有步骤使用爪印图标 */
+    .step-item .step-num {
+      width: 24px;
+      height: 24px;
+      border-radius: 0;
+      background: transparent;
+      background-image: url("icon/爪子.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      color: #333333;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+      margin-bottom: 4px;
+      text-shadow: none;
+    }
+    .step-item:not(.done):not(.active) .step-num {
+      opacity: 0.6;
+    }
+    .step-label {
+      font-size: 12px;
+      line-height: 17px;
+      color: #333333;
+      text-align: center;
+      white-space: nowrap;
+    }
+    .step-item.active .step-label {
+      color: #333333;
+      font-weight: 600;
+    }
+    .content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      /* 内页左右页边距 10px；顶部不额外留空 */
+      padding: 0 10px;
+      background: #ffffff;
+      overflow-y: auto;
+    }
+    .preview-card {
+      width: 65%;
+      border-radius: 10px;
+      background: #e5e7eb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      aspect-ratio: 3 / 4; /* 高度随宽度按宽:高=3:4 计算 */
+      position: relative;
+      overflow: hidden;
+    }
+    .preview-inner {
+      width: 100%;
+      height: 100%;
+      border: none;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #9ca3af;
+      font-size: 14px;
+      position: relative;
+    }
+    .preview-tip {
+      margin: 0 auto 10px;
+      font-size: 12px;
+      line-height: 17px;
+      color: #666666;
+      text-align: center;
+    }
+    /* 图片水印文字：45度平铺（萌尾引力） */
+    .wm-layer {
+      position: absolute;
+      top: -28%;
+      left: -28%;
+      width: 156%;
+      height: 156%;
+      transform: rotate(-45deg);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: min-content;
+      justify-items: center;
+      align-content: space-evenly;
+      gap: 42px 34px;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 1;
+    }
+    .wm-layer span {
+      white-space: nowrap;
+      color: rgba(255, 255, 255, 0.6);
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 17px;
+      text-align: center;
+    }
+    /* 预览页水印：已按需求移除 */
+    /* 剩余张数：线框与底色同购买弹窗内套餐卡片（未选中态 .package-item） */
+    .remain-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 12px;
+      line-height: 17px;
+      color: var(--sub);
+      margin: auto 0 10px;
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid transparent;
+      background: #fff9f0;
+      box-sizing: border-box;
+    }
+    .get-more {
+      font-size: 14px;
+      line-height: 20px;
+      color: var(--primary);
+      font-weight: 400;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .btn-row {
+      display: flex;
+      gap: 10px;
+      padding: 10px;
+      position: absolute;
+      bottom: 0px;
+      width: 100%;
+      z-index: 10;
+      background: #fff;
+    }
+    /* 底部主按钮引导气泡 */
+    .unlock-bubble {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 96px; /* 位于按钮上方 */
+      max-width: calc(100% - 36px);
+      padding: 10px 12px;
+      border-radius: 10px;
+      background: transparent;
+      color: #ffffff;
+      font-size: 12px;
+      line-height: 17px;
+      text-align: center;
+      z-index: 5;
+      pointer-events: none;
+      white-space: nowrap;
+    }
+
+    .btn-outline {
+      flex: 1;
+      padding: 0 10px;
+      border-radius: 999px;
+      border: 1px solid var(--primary);
+      background: #fff;
+      color: var(--primary);
+      font-size: 14px;
+      line-height: 20px;
+      min-height: 44px;
+      cursor: pointer;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .btn-primary {
+      flex: 1;
+      padding: 0 10px;
+      border-radius: 999px;
+      border: none;
+      background: var(--primary);
+      color: #000000;
+      font-size: 14px;
+      line-height: 20px;
+      min-height: 44px;
+      font-weight: 400;
+      cursor: pointer;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-mask {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      display: none;
+      align-items: flex-end;
+      justify-content: center;
+      z-index: 12;
+    }
+    .modal-mask.active {
+      display: flex;
+    }
+    /* 保存高清：确认使用次数弹窗（有次数直接弹；购买成功后再弹） */
+    .hd-save-usage-mask {
+      z-index: 14;
+      align-items: flex-end;
+    }
+    .hd-save-usage-modal.modal {
+      padding-bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+    }
+    /* 与购买弹窗套餐选中态一致：浅橙描边 + 浅黄底 + 外圈柔光 */
+    .hd-usage-quota-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid #fcd89a;
+      background: #fff9f0;
+      box-shadow: 0 0 0 1px rgba(246, 162, 2, 0.25);
+      margin-bottom: 10px;
+      font-size: 14px;
+      line-height: 20px;
+      box-sizing: border-box;
+    }
+    .hd-usage-quota-left {
+      flex: 1;
+      min-width: 0;
+      color: #000000;
+    }
+    .hd-usage-quota-left strong {
+      font-weight: 600;
+      color: #000000;
+    }
+    .hd-usage-quota-mid {
+      flex-shrink: 0;
+      color: #333333;
+      white-space: nowrap;
+    }
+    /* 社区发布勾选：样式见 css/mw-checkbox-agree.css；整行水平居中，勾选与文字垂直居中 */
+    .hd-save-usage-modal .agree-row {
+      margin-bottom: 0;
+      justify-content: center;
+      align-items: center;
+    }
+    .hd-save-usage-modal .agree-row .agree-row-label {
+      flex: 0 1 auto;
+    }
+    .video-save-tip {
+      margin: 0 0 10px;
+      font-size: 14px;
+      line-height: 20px;
+      color: #666666;
+      text-align: left;
+    }
+    /* 底部按钮与「不满意」弹窗 .guide-btn-row 一致 */
+    .hd-save-usage-modal .guide-btn-row {
+      margin-top: 20px;
+    }
+    #btnHdSaveBuyMore {
+      flex: 0 0 96px;
+      width: 96px;
+      min-width: 96px;
+    }
+    #btnVideoSaveBuyMore {
+      flex: 0 0 96px;
+      width: 96px;
+      min-width: 96px;
+    }
+    .modal {
+      position: relative;
+      width: 100%;
+      max-width: 390px;
+      border-radius: 10px 10px 0 0;
+      background: #ffffff;
+      box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.08);
+      padding: 10px 10px calc(10px + env(safe-area-inset-bottom, 0px));
+      --pkg-card-bg: #fff9f0;
+      --pkg-card-border: #f0e6d4;
+    }
+    .sheet-close-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 3;
+      width: 21px;
+      height: 21px;
+      border: none;
+      border-radius: 50%;
+      padding: 0;
+      cursor: pointer;
+      background: #b0b8c1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .sheet-close-btn::before,
+    .sheet-close-btn::after {
+      content: "";
+      position: absolute;
+      width: 9px;
+      height: 1.5px;
+      background: #ffffff;
+      border-radius: 1px;
+    }
+    .sheet-close-btn::before {
+      transform: rotate(45deg);
+    }
+    .sheet-close-btn::after {
+      transform: rotate(-45deg);
+    }
+    .modal-header {
+      margin-bottom: 10px;
+      padding: 0 36px;
+      text-align: center;
+    }
+    .modal-title {
+      font-size: 17px;
+      line-height: 24px;
+      font-weight: 700;
+      color: #000000;
+      margin: 0;
+      text-align: center;
+    }
+    .modal-section {
+      margin-bottom: 10px;
+    }
+    .modal-section-title {
+      margin: 0 0 10px;
+      font-size: 14px;
+      line-height: 20px;
+      font-weight: 600;
+      color: #000000;
+    }
+    .package-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 0;
+    }
+    .package-item {
+      position: relative;
+      display: block;
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid transparent;
+      background: var(--pkg-card-bg, #fff9f0);
+      cursor: pointer;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+    .package-item:focus-visible,
+    .single-row:focus-visible {
+      outline: 2px solid rgba(246, 162, 2, 0.35);
+      outline-offset: 2px;
+    }
+    .single-row.highlight {
+      border: 1px solid #fcd89a;
+      background: #fff9f0;
+      box-shadow: 0 0 0 1px rgba(246, 162, 2, 0.25);
+    }
+    .package-item.highlight {
+      border: 1px solid #fcd89a;
+      background: #fff9f0;
+      box-shadow: 0 0 0 1px rgba(246, 162, 2, 0.25);
+    }
+    .pkg-card-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: 0;
+    }
+    .pkg-card-left {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .pkg-card-title {
+      font-size: 15px;
+      line-height: 21px;
+      font-weight: 600;
+      color: #000000;
+    }
+    .pkg-card-sub {
+      font-size: 12px;
+      line-height: 17px;
+      font-weight: 400;
+      color: #999999;
+    }
+    .pkg-card-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+    .pkg-price-stack {
+      text-align: right;
+    }
+    .pkg-price-current {
+      font-size: 15px;
+      line-height: 21px;
+      font-weight: 700;
+      color: #333333;
+    }
+    .package-item.highlight .pkg-price-current {
+      color: var(--primary);
+    }
+    .pkg-price-origin {
+      margin-top: 2px;
+      font-size: 12px;
+      line-height: 17px;
+      color: #999999;
+      font-weight: 400;
+    }
+    .pkg-price-origin s {
+      text-decoration: line-through;
+    }
+    .pkg-select {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 1px solid #cccccc;
+      background: #ffffff;
+      box-sizing: border-box;
+      flex-shrink: 0;
+      position: relative;
+      display: inline-block;
+    }
+    .package-item.highlight .pkg-select,
+    .hd-save-usage-modal .hd-usage-quota-row .pkg-select {
+      border: 1px solid var(--primary);
+      background: var(--primary);
+    }
+    .package-item.highlight .pkg-select::after,
+    .hd-save-usage-modal .hd-usage-quota-row .pkg-select::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 45%;
+      width: 4px;
+      height: 8px;
+      margin: -4px 0 0 -2px;
+      border: solid var(--on-primary-text);
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+    }
+    .pkg-option-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+    .pkg-radio {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 1px solid #cccccc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      background: #ffffff;
+      box-sizing: border-box;
+      position: relative;
+    }
+    .pkg-radio::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 0;
+      background: transparent;
+    }
+    .single-row.highlight .pkg-radio {
+      border: 1px solid var(--primary);
+      background: var(--primary);
+    }
+    .single-row.highlight .pkg-radio::after {
+      left: 50%;
+      top: 45%;
+      width: 4px;
+      height: 8px;
+      margin: -4px 0 0 -2px;
+      border: solid var(--on-primary-text);
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+    }
+    .single-row {
+      padding: 10px;
+      border-radius: 10px;
+      background: #fff9f0;
+      border: 1px solid transparent;
+      margin-bottom: 0;
+      font-size: 14px;
+      line-height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      cursor: pointer;
+      box-sizing: border-box;
+    }
+    .single-main {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      min-width: 0;
+    }
+    .single-main strong {
+      color: #000000;
+      font-weight: 600;
+      font-size: 15px;
+      line-height: 21px;
+    }
+    .single-main span {
+      color: #999999;
+      font-size: 12px;
+      line-height: 17px;
+    }
+    .single-price {
+      font-size: 15px;
+      line-height: 21px;
+      color: #333333;
+      font-weight: 700;
+      text-align: right;
+    }
+    .single-row.highlight .single-price {
+      color: var(--primary);
+    }
+    .modal-footer {
+      margin-top: 20px;
+    }
+    .pay-bar {
+      margin-top: 0;
+      border-radius: 999px;
+      min-height: 44px;
+      background: var(--primary);
+      text-align: center;
+      color: var(--on-primary-text);
+      font-size: 15px;
+      line-height: 21px;
+      font-weight: 400;
+      padding: 10px 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .pay-bar:active:not(.loading) {
+      opacity: 0.92;
+    }
+    .pay-bar.loading {
+      opacity: 0.85;
+      cursor: default;
+    }
+    .pay-loading-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: 2px solid rgba(0, 0, 0, 0.2);
+      border-top-color: var(--on-primary-text);
+      animation: pay-spin 0.7s linear infinite;
+    }
+    @keyframes pay-spin {
+      to { transform: rotate(360deg); }
+    }
+    .toast {
+      position: absolute;
+      left: 50%;
+      bottom: 96px;
+      transform: translateX(-50%);
+      max-width: 80%;
+      padding: 8px 10px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      color: #fff;
+      font-size: 12px;
+      line-height: 17px;
+      text-align: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease-out;
+      z-index: 20;
+    }
+    .toast.show {
+      opacity: 1;
+    }
+    .guide-mask {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      display: none;
+      align-items: flex-end;
+      justify-content: center;
+      z-index: 10;
+    }
+    .guide-mask.active {
+      display: flex;
+    }
+    .guide-sheet {
+      width: 100%;
+      max-width: 390px;
+      border-radius: 10px 10px 0 0;
+      background: #fff;
+      box-shadow: 0 -8px 30px rgba(15, 23, 42, 0.25);
+      padding: 10px 10px 10px;
+      font-size: 14px;
+      color: #111827;
+    }
+    .guide-title {
+      font-weight: 600;
+      margin-bottom: 0;
+      font-size: 16px;
+      line-height: 22px;
+      text-align: center;
+      width: 100%;
+    }
+    .guide-desc {
+      font-size: 14px;
+      line-height: 20px;
+      color: #666666;
+      /* 该句上下间距 20px，并居中 */
+      margin: 20px 0;
+      text-align: center;
+    }
+    .guide-steps {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 20px;
+      font-size: 14px;
+      color: #666666;
+      line-height: 20px;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+    .guide-steps li {
+      margin-bottom: 0;
+      white-space: nowrap;
+    }
+    .guide-steps li span {
+      color: #f6a202;
+      font-weight: 600;
+      margin-right: 2px;
+    }
+    .guide-btn-row {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-top: 0;
+    }
+    .guide-btn {
+      padding: 0 10px;
+      border-radius: 999px;
+      flex: 1;
+      min-height: 44px;
+      border: 1px solid var(--primary);
+      background: #fff;
+      font-size: 14px;
+      line-height: 20px;
+      cursor: pointer;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      cursor: pointer;
+    }
+    .guide-btn.primary {
+      border-color: var(--primary);
+      /* 重新上传：黄底黑字（实心主色） */
+      background: var(--primary);
+      color: #000000;
+      font-weight: 400;
+    }
+
+    /* 大图预览：效果同「保存写真」页 photo-lightbox */
+    .photo-lightbox {
+      position: absolute;
+      inset: 0;
+      z-index: 50;
+      display: none;
+      flex-direction: column;
+      padding: 12px;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+    .photo-lightbox.active {
+      display: flex;
+    }
+    .photo-lightbox-backdrop {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background: rgba(0, 0, 0, 0.65);
+    }
+    .photo-lightbox-frame {
+      position: relative;
+      z-index: 1;
+      flex: 1;
+      min-height: 0;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: stretch;
+      /* 不拦截点击，让遮罩能收到事件；仅图片区域可点 */
+      pointer-events: none;
+    }
+    .photo-lightbox-inner {
+      position: relative;
+      box-sizing: border-box;
+      pointer-events: auto;
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      /* 过高时压缩，避免与底部文案挤出壳外 */
+      max-height: calc(100% - 37px);
+      flex-shrink: 1;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #e5e7eb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .photo-lightbox-inner img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+    .photo-lightbox-logo {
+      position: absolute;
+      top: 80%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+      pointer-events: none;
+    }
+    .photo-lightbox-logo img {
+      max-width: 140px;
+      max-height: 140px;
+      display: block;
+    }
+    .photo-lightbox-hint {
+      margin: 20px 0 0;
+      padding: 0 8px;
+      text-align: center;
+      font-size: 12px;
+      line-height: 17px;
+      color: rgba(255, 255, 255, 0.88);
+      pointer-events: none;
+      flex-shrink: 0;
+    }
+
+    /* 换个模版：固定宽度 96px */
+    #guideChangeTpl {
+      flex: 0 0 96px;
+      width: 96px;
+      min-width: 96px;
+    }
+
+    /* 协议勾选框组件 */
+    .agree-row {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+      font-size: 12px;
+      line-height: 17px;
+      color: #666666;
+      cursor: pointer;
+    }
+
+    .agree-checkbox-input {
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      opacity: 0;
+      width: 16px;
+      height: 16px;
+      margin: 0;
+      cursor: pointer;
+      z-index: 1;
+    }
+
+    .agree-checkbox-box {
+      flex-shrink: 0;
+      width: 16px;
+      height: 16px;
+      border-radius: 3px;
+      border: 1px solid #cccccc;
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+
+    .agree-checkbox-input:checked + .agree-checkbox-box {
+      background: var(--primary);
+      border: 1px solid var(--primary);
+    }
+
+    .agree-checkbox-input:checked + .agree-checkbox-box::after {
+      content: "";
+      display: block;
+      width: 3px;
+      height: 6px;
+      border: solid var(--on-primary-text);
+      border-width: 0 1.5px 1.5px 0;
+      transform: rotate(45deg);
+      margin-bottom: 1px;
+    }
+
+    .agree-checkbox-input:focus-visible + .agree-checkbox-box {
+      outline: 2px solid rgba(246, 162, 2, 0.35);
+      outline-offset: 2px;
+    }
+
+    .agree-row a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    .agree-row a:hover {
+      text-decoration: underline;
+    }
+
+    .agree-row.agree-row--top {
+      align-items: flex-start;
+    }
+
+    .agree-row.agree-row--top .agree-checkbox-input {
+      top: 2px;
+      transform: none;
+    }
+
+    .agree-row.agree-row--text-14 {
+      font-size: 14px;
+      line-height: 20px;
+      color: #000000;
+    }
+
+    .agree-row-label {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+
+    .agree-badge-tip {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 16px;
+      height: 16px;
+      padding: 0 4px;
+      border-radius: 999px;
+      background: #ef4444;
+      color: #ffffff;
+      font-size: 11px;
+      line-height: 1;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <div class="mini-top">
+      <div class="status-bar">
+        <span>1:23 AM</span>
+        <div class="status-icons">
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="signal"></div>
+        </div>
+      </div>
+      <div class="nav-bar">
+        <button class="back-btn" aria-label="返回"></button>
+        <div></div>
+        <div></div>
+      </div>
+      <div class="steps-bar">
+        <div class="step-item done">
+          <span class="step-num">1</span>
+          <span class="step-label">确认模版</span>
+        </div>
+        <div class="step-item done">
+          <span class="step-num">2</span>
+          <span class="step-label">生成写真</span>
+        </div>
+        <div class="step-item active">
+          <span class="step-num">3</span>
+          <span class="step-label">保存写真</span>
+        </div>
+      </div>
+    </div>
+    <div class="shell-scroll">
+    <div class="content">
+      <div style="display: flex; flex-direction: column; align-items: center;">
+        <!-- 普通版图片 -->
+        <div style="flex: 0 0 auto; width: 40%; border-radius: 8px; background: #ffffff; overflow: hidden;">
+          <div class="preview-card" style="width: 100%; aspect-ratio: 3 / 4;">
+            <div class="preview-inner" style="cursor: pointer; width: 100%; height: 100%; position: relative;" id="previewImage">
+              <img src="icon/see.png" alt="预览图" style="width: 100%; height: 100%; object-fit: cover;" />
+              <div style="position: absolute; top: 80%; left: 50%; transform: translate(-50%, -50%); z-index: 1;">
+                <img src="icon/logo.png" alt="萌尾引力" style="max-width: 80px; max-height: 80px;" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="padding-bottom: 10px;">
+          <span style="font-size: 12px; color: #999999; white-space: nowrap;">点击查看大图，长按可保存至本地</span>
+        </div>
+        
+        <!-- 高清无水印版 -->
+        <div id="hdPreviewCard" style="flex: 0 0 auto; width: 88%; margin-left: 0; border-radius: 8px; background: #ffffff; position: relative; overflow: hidden;">
+          <div class="preview-card" style="width: 100%; aspect-ratio: 3 / 4; position: relative; display: flex; justify-content: center;">
+            <!-- 黑色遮罩 -->
+            <div style="position: absolute; inset: 0; background: rgba(0, 0, 0, 0.3); z-index: 1;"></div>
+            <!-- 锁图标 -->
+            <div style="position: absolute; top: 35%; left: 50%; transform: translate(-50%, -50%); z-index: 3; opacity: 0.8;">
+              <img src="icon/锁.png" alt="锁" style="width: 40px; height: 40px;" />
+            </div>
+            <!-- 解锁视频写真/4K画质无水印版文字 -->
+            <div id="hdWatermarkText" style="position: absolute; top: 48%; left: 50%; transform: translate(-50%, -50%); z-index: 4; font-size: 12px; font-weight: 600; color: #ffffff; white-space: nowrap;">
+              解锁视频写真
+            </div>
+            <!-- 卖点文案 -->
+            <div id="hdSellingPoints" style="position: absolute; top: 60%; left: 50%; transform: translate(-50%, -50%); z-index: 4; font-size: 12px; color: #ffffff; white-space: nowrap; text-align: center; line-height: 1.6;">
+              <div><span style="color: #4ade80;">✓</span> 无水印烦恼</div>
+              <div><span style="color: #4ade80;">✓</span> 高清社交媒体分享</div>
+              <div><span style="color: #4ade80;">✓</span> 可打印7寸及以上照片</div>
+              <div><span style="color: #4ade80;">✓</span> 4K超清画质细节纤毫毕现</div>
+            </div>
+            <div class="preview-inner" style="width: 100%; height: 100%; overflow: hidden;">
+              <img src="icon/see.png" alt="高清预览图" style="width: 83%; height: 83%; object-fit: cover; transform: scale(1.2); transform-origin: center center;" />
+            </div>
+          </div>
+        </div>
+        
+        <!-- 不满意文字按钮 -->
+        <div style="text-align: center; margin-top: 16px;">
+          <button id="btnNotSatisfied" style="background: none; border: none; color: #666666; font-size: 14px; padding: 8px 24px; cursor: pointer; white-space: nowrap;">效果不满意？</button>
+        </div>
+      </div>
+    </div>
+
+    </div>
+
+    <div class="btn-row" >
+      <button class="btn-primary" id="btnSaveHd">解锁高清写真</button>
+    </div>
+
+    <!-- 大图预览：效果同「保存写真」页 -->
+    <div class="photo-lightbox" id="largeImageModal" role="dialog" aria-modal="true" aria-hidden="true" aria-label="大图预览">
+      <div class="photo-lightbox-backdrop" id="largeImageBackdrop"></div>
+      <div class="photo-lightbox-frame">
+        <div class="photo-lightbox-inner">
+          <img id="largeImage" src="" alt="大图预览" />
+          <div class="photo-lightbox-logo" aria-hidden="true">
+            <img src="icon/logo.png" alt="萌尾引力" />
+          </div>
+        </div>
+        <p class="photo-lightbox-hint">长按保存图片</p>
+      </div>
+    </div>
+
+    <div class="modal-mask" id="pkgModal">
+      <div class="modal">
+        <button type="button" class="sheet-close-btn" id="pkgModalClose" aria-label="关闭"></button>
+        <div class="modal-header">
+          <div class="modal-title" id="hdModalTitle">解锁高清写真</div>
+        </div>
+        <div class="modal-section pkg-section pkg-section-image">
+          <div class="modal-section-title">单次购买</div>
+          <div class="package-item pkg-type-image highlight" data-price="1.68" data-count="1" data-photo-save-count="1" data-label="单张购买-图片">
+            <div class="pkg-card-inner">
+              <div class="pkg-card-left">
+                <div class="pkg-card-title">高清图片 x1</div>
+                <div class="pkg-card-sub">送1张免费萌照</div>
+              </div>
+              <div class="pkg-card-right">
+                <div class="pkg-price-stack">
+                  <div class="pkg-price-current">¥1.68</div>
+                  <div class="pkg-price-origin"><s>原价¥1.98</s></div>
+                </div>
+                <span class="pkg-select" aria-hidden="true"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-section pkg-section pkg-section-image">
+          <div class="modal-section-title">套餐购买</div>
+          <div class="package-list">
+            <div class="package-item pkg-type-image" data-price="5.8" data-count="10" data-photo-save-count="5" data-label="尝鲜套餐-图片">
+              <div class="pkg-card-inner">
+                <div class="pkg-card-left">
+                  <div class="pkg-card-title">高清图片 x5</div>
+                  <div class="pkg-card-sub">送8张免费萌照</div>
+                </div>
+                <div class="pkg-card-right">
+                  <div class="pkg-price-stack">
+                    <div class="pkg-price-current">¥5.8</div>
+                    <div class="pkg-price-origin"><s>原价¥9.9</s></div>
+                  </div>
+                  <span class="pkg-select" aria-hidden="true"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-section pkg-section pkg-section-video" style="display: none;">
+          <div class="modal-section-title">单次购买</div>
+          <div class="package-item pkg-type-video" data-price="7.8" data-count="1" data-photo-save-count="1" data-label="单张购买-视频">
+            <div class="pkg-card-inner">
+              <div class="pkg-card-left">
+                <div class="pkg-card-title">视频写真 x1</div>
+                <div class="pkg-card-sub">送1张免费萌照</div>
+              </div>
+              <div class="pkg-card-right">
+                <div class="pkg-price-stack">
+                  <div class="pkg-price-current">¥7.8</div>
+                  <div class="pkg-price-origin"><s>原价¥9.8</s></div>
+                </div>
+                <span class="pkg-select" aria-hidden="true"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-section pkg-section pkg-section-video" style="display: none;">
+          <div class="modal-section-title">套餐购买</div>
+          <div class="package-list">
+            <div class="package-item pkg-type-video" data-price="29.8" data-count="10" data-photo-save-count="5" data-label="尝鲜套餐-视频">
+              <div class="pkg-card-inner">
+                <div class="pkg-card-left">
+                  <div class="pkg-card-title">视频写真x5</div>
+                  <div class="pkg-card-sub">送8张免费萌照</div>
+                </div>
+                <div class="pkg-card-right">
+                  <div class="pkg-price-stack">
+                    <div class="pkg-price-current">¥29.8</div>
+                    <div class="pkg-price-origin"><s>原价¥49</s></div>
+                  </div>
+                  <span class="pkg-select" aria-hidden="true"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <div class="pay-bar" id="pkgConfirm"><span id="pkgConfirmText">￥1.68 去支付</span></div>
+        </div>
+      </div>
+    </div>
+    <!-- 保存高清：确认使用（图示：剩余张数 + 本次使用 + 社区发布 + 购买/保存） -->
+    <div class="modal-mask hd-save-usage-mask" id="hdSaveUsageModal">
+      <div class="modal hd-save-usage-modal">
+        <button type="button" class="sheet-close-btn" id="hdSaveUsageClose" aria-label="关闭"></button>
+        <div class="modal-header">
+          <div class="modal-title">保存高清写真</div>
+        </div>
+        <div class="hd-usage-quota-row">
+          <div class="hd-usage-quota-left">
+            剩余：<strong id="hdSaveRemainCount">0</strong> 张
+          </div>
+          <div class="hd-usage-quota-mid">本次使用1张</div>
+          <span class="pkg-select" aria-hidden="true"></span>
+        </div>
+        <label class="agree-row agree-row--text-14">
+          <input type="checkbox" id="hdCommunityPost" class="agree-checkbox-input" />
+          <span class="agree-checkbox-box" aria-hidden="true"></span>
+          <span class="agree-row-label">
+            <span>分享至社区【萌宠晒照】板块，每天可得1张免费萌照</span>
+          </span>
+        </label>
+        <div class="guide-btn-row">
+          <button type="button" class="guide-btn" id="btnHdSaveBuyMore">购买写真</button>
+          <button type="button" class="guide-btn primary" id="btnHdSaveConfirm">确认保存</button>
+        </div>
+      </div>
+    </div>
+    <div class="modal-mask hd-save-usage-mask" id="videoSaveUsageModal">
+      <div class="modal hd-save-usage-modal">
+        <button type="button" class="sheet-close-btn" id="videoSaveUsageClose" aria-label="关闭"></button>
+        <div class="modal-header">
+          <div class="modal-title">保存视频写真</div>
+        </div>
+        <p class="video-save-tip">确认保存后，将开始为你制作专属的萌宠视频写真啦～高质量的成片渲染需要一点时间，可稍后前往「我的 - 我的萌宠秀」查看生成结果，把可爱的成片保存下来啦！</p>
+        <div class="hd-usage-quota-row">
+          <div class="hd-usage-quota-left">
+            剩余：<strong id="videoSaveRemainCount">0</strong>张
+          </div>
+          <div class="hd-usage-quota-mid">本次使用1张</div>
+          <span class="pkg-select" aria-hidden="true"></span>
+        </div>
+        <label class="agree-row agree-row--text-14">
+          <input type="checkbox" id="videoCommunityPost" class="agree-checkbox-input" />
+          <span class="agree-checkbox-box" aria-hidden="true"></span>
+          <span class="agree-row-label">
+            <span>分享至社区【萌宠晒照】板块，每天可得1张免费萌照</span>
+          </span>
+        </label>
+        <div class="guide-btn-row">
+          <button type="button" class="guide-btn" id="btnVideoSaveBuyMore">购买写真</button>
+          <button type="button" class="guide-btn primary" id="btnVideoSaveConfirm">确认保存</button>
+        </div>
+      </div>
+    </div>
+    <div class="toast" id="toast">已保存高清写真</div>
+    <div class="guide-mask" id="guideMask">
+      <div class="guide-sheet">
+        <div class="guide-title">效果不满意？先检查下照片质量</div>
+        <div class="guide-desc">建议重新选择照片时，尽量满足下面这些条件：</div>
+        <ul class="guide-steps">
+          <li><span>✓</span>照片清晰</li>
+          <li><span>✓</span>主体完整</li>
+          <li><span>✓</span>背景简洁</li>
+          <li><span>✓</span>光线明亮</li>
+        </ul>
+        <div class="guide-btn-row">
+          <button class="guide-btn" id="guideChangeTpl">换个模版</button>
+          <button class="guide-btn primary" id="guideGoUpload">重新上传</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const currentUrl = new URL(window.location.href);
+    const from = currentUrl.searchParams.get("from");
+    const cat = currentUrl.searchParams.get("cat");
+    const back = document.querySelector(".nav-bar .back-btn");
+    if (back) {
+      back.onclick = function () {
+        if (from === "mw") {
+          window.location.href = "我的萌宠秀.html";
+          return;
+        }
+        if (from === "list") {
+          const target = cat
+            ? "全部列表.html?cat=" + encodeURIComponent(cat)
+            : "全部列表.html";
+          window.location.href = target;
+          return;
+        }
+        window.location.href = "萌宠秀.html";
+      };
+    }
+
+    /* 从「我的萌宠秀」预览历史进入：走图片预览态，返回萌宠秀页 */
+    (function initPreviewFromMw() {
+      try {
+        if (from !== "mw") return;
+        sessionStorage.setItem("selectedTemplateType", "image");
+      } catch (e) {
+        /* ignore */
+      }
+    })();
+
+    const btnSaveHd = document.getElementById("btnSaveHd");
+    const btnSaveEmoji = document.getElementById("btnSaveEmoji");
+    const unlockBubble = document.getElementById("unlockBubble");
+    const pkgModal = document.getElementById("pkgModal");
+    const pkgConfirm = document.getElementById("pkgConfirm");
+    const pkgConfirmText = document.getElementById("pkgConfirmText");
+    const pkgModalClose = document.getElementById("pkgModalClose");
+    const btnMorePhoto = document.getElementById("btnMorePhoto");
+    const photoRemainText = document.getElementById("photoRemainText");
+    const toast = document.getElementById("toast");
+    const guideMask = document.getElementById("guideMask");
+    const btnNotSatisfied = document.getElementById("btnNotSatisfied");
+    const guideChangeTpl = document.getElementById("guideChangeTpl");
+    const guideGoUpload = document.getElementById("guideGoUpload");
+    const hdSaveUsageModal = document.getElementById("hdSaveUsageModal");
+    const hdSaveUsageClose = document.getElementById("hdSaveUsageClose");
+    const hdSaveRemainCount = document.getElementById("hdSaveRemainCount");
+    const btnHdSaveBuyMore = document.getElementById("btnHdSaveBuyMore");
+    const btnHdSaveConfirm = document.getElementById("btnHdSaveConfirm");
+    const videoSaveUsageModal = document.getElementById("videoSaveUsageModal");
+    
+    // 大图预览功能
+    const previewImage = document.getElementById("previewImage");
+    const largeImageModal = document.getElementById("largeImageModal");
+    const largeImageBackdrop = document.getElementById("largeImageBackdrop");
+    const largeImage = document.getElementById("largeImage");
+
+    function updateUnlockBubbleArrow() {
+      if (!unlockBubble || !btnSaveHd) return;
+      const bubbleRect = unlockBubble.getBoundingClientRect();
+      const btnRect = btnSaveHd.getBoundingClientRect();
+      const targetX = btnRect.left + btnRect.width / 2;
+      let arrowLeft = targetX - bubbleRect.left;
+      // 边界：避免箭头贴到圆角边上
+      const min = 14;
+      const max = bubbleRect.width - 14;
+      if (arrowLeft < min) arrowLeft = min;
+      if (arrowLeft > max) arrowLeft = max;
+      unlockBubble.style.setProperty("--arrow-left", `${arrowLeft}px`);
+    }
+    
+    if (previewImage) {
+      previewImage.addEventListener("click", function() {
+        // 获取预览图片的src
+        const imgSrc = previewImage.querySelector("img").src;
+        // 设置大图的src
+        largeImage.src = imgSrc;
+        // 显示大图预览
+        largeImageModal.classList.add("active");
+        largeImageModal.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+      });
+    }
+
+    // 初次计算 + 尺寸变化时重算（保证箭头始终对齐按钮中心）
+    updateUnlockBubbleArrow();
+    window.addEventListener("resize", updateUnlockBubbleArrow);
+    
+    function closeLargePreview() {
+      if (!largeImageModal) return;
+      largeImageModal.classList.remove("active");
+      largeImageModal.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    }
+
+    if (largeImageBackdrop) {
+      largeImageBackdrop.addEventListener("click", closeLargePreview);
+    }
+    /* 点击 padding / 遮罩关闭 */
+    if (largeImageModal) {
+      largeImageModal.addEventListener("click", (e) => {
+        if (e.target === largeImageModal || e.target === largeImageBackdrop) {
+          closeLargePreview();
+        }
+      });
+    }
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && largeImageModal && largeImageModal.classList.contains("active")) {
+        closeLargePreview();
+      }
+    });
+    const videoSaveUsageClose = document.getElementById("videoSaveUsageClose");
+    const videoSaveRemainCount = document.getElementById("videoSaveRemainCount");
+    const btnVideoSaveBuyMore = document.getElementById("btnVideoSaveBuyMore");
+    const btnVideoSaveConfirm = document.getElementById("btnVideoSaveConfirm");
+    const isVideoTemplate = sessionStorage.getItem("selectedTemplateType") === "video";
+    let currentPhotoCount = parseInt(sessionStorage.getItem("photoSaveCount") || "0", 10);
+    if (Number.isNaN(currentPhotoCount)) currentPhotoCount = 0;
+    let currentVideoCount = parseInt(sessionStorage.getItem("videoSaveCount") || "0", 10);
+    if (Number.isNaN(currentVideoCount)) currentVideoCount = 0;
+    /** 点击「保存高清写真」但次数为 0，需先购买；购买成功后弹出「确认使用」弹窗 */
+    let pendingHighDefSave = false;
+    /** 从「确认使用」里点「购买写真」后，支付完成再弹回确认使用 */
+    let pendingReopenUsageAfterPurchase = false;
+    /** 视频写真保存弹窗中点击购买后，支付完成再弹回视频确认弹窗 */
+    let pendingVideoSavePurchase = false;
+
+    function showToast(message) {
+      if (!toast) return;
+      toast.textContent = message;
+      toast.classList.add("show");
+      setTimeout(() => {
+        toast.classList.remove("show");
+      }, 1600);
+    }
+
+    function updatePhotoRemainText() {
+      if (!photoRemainText) return;
+      // 统一由 updateSaveRemainText 按进入的模版类型刷新文案与数值
+      sessionStorage.setItem("photoSaveCount", String(currentPhotoCount));
+      updateSaveRemainText();
+    }
+    function updateVideoRemainText() {
+      if (videoSaveRemainCount) videoSaveRemainCount.textContent = String(currentVideoCount);
+      sessionStorage.setItem("videoSaveCount", String(currentVideoCount));
+      updateSaveRemainText();
+    }
+
+    function updateSaveRemainText() {
+      if (!photoRemainText) return;
+      if (isVideoTemplate) {
+        photoRemainText.textContent = `剩余视频写真保存次数：${currentVideoCount}`;
+      } else {
+        photoRemainText.textContent = `剩余图片写真保存次数：${currentPhotoCount}`;
+      }
+    }
+
+    // 根据是否为视频模版修改相应的文案和按钮
+    function updateVideoTemplateContent() {
+      const isVideo = sessionStorage.getItem("selectedTemplateType") === "video";
+      
+      // 修改文案
+      const hdWatermarkText = document.getElementById('hdWatermarkText');
+      if (hdWatermarkText) {
+        hdWatermarkText.textContent = isVideo ? '解锁视频写真' : '解锁4K画质无水印版';
+      }
+      
+      // 视频模版隐藏促卖文案
+      const hdSellingPoints = document.getElementById('hdSellingPoints');
+      if (hdSellingPoints) {
+        hdSellingPoints.style.display = isVideo ? 'none' : 'block';
+      }
+    }
+
+    function updatePayBarFrom(el) {
+      const price = el.getAttribute("data-price");
+      if (!price) return;
+      if (pkgConfirmText) {
+        pkgConfirmText.textContent = `￥${price} 去支付`;
+      } else {
+        pkgConfirm.textContent = `￥${price} 去支付`;
+      }
+      pkgConfirm.dataset.count = el.getAttribute("data-count") || "0";
+    }
+
+    function openHdSaveUsageModal() {
+      if (hdSaveRemainCount) hdSaveRemainCount.textContent = String(currentPhotoCount);
+      if (hdSaveUsageModal) hdSaveUsageModal.classList.add("active");
+    }
+
+    function closeHdSaveUsageModal() {
+      if (hdSaveUsageModal) hdSaveUsageModal.classList.remove("active");
+    }
+    function openVideoSaveUsageModal() {
+      updateVideoRemainText();
+      if (videoSaveUsageModal) videoSaveUsageModal.classList.add("active");
+    }
+    function closeVideoSaveUsageModal() {
+      if (videoSaveUsageModal) videoSaveUsageModal.classList.remove("active");
+    }
+
+    /** 点击「保存高清写真」：无次数 → 仅购买弹窗；有次数 → 直接确认使用弹窗 */
+    function saveHighDefPhoto() {
+      if (isVideoTemplate) {
+        if (currentVideoCount <= 0) {
+          pendingVideoSavePurchase = true;
+          if (pkgModal) pkgModal.classList.add("active");
+          return;
+        }
+        openVideoSaveUsageModal();
+        return;
+      }
+      if (currentPhotoCount <= 0) {
+        pendingHighDefSave = true;
+        if (pkgModal) pkgModal.classList.add("active");
+        return;
+      }
+      pendingHighDefSave = false;
+      openHdSaveUsageModal();
+    }
+
+    function confirmHdSaveAndGo() {
+      if (currentPhotoCount <= 0) {
+        showToast("次数不足，请先购买");
+        closeHdSaveUsageModal();
+        return;
+      }
+      currentPhotoCount -= 1;
+      updatePhotoRemainText();
+      closeHdSaveUsageModal();
+      showToast("保存成功");
+      sessionStorage.setItem("savePhotoFromHdPreview", "1");
+      sessionStorage.setItem("photoSavedSuccess", "1");
+      window.location.href = "保存高清写真-图片.html?from=preview&saved=1";
+    }
+    function confirmVideoSaveAndGo() {
+      if (currentVideoCount <= 0) {
+        showToast("视频写真次数不足，请先购买");
+        return;
+      }
+      currentVideoCount -= 1;
+      updateVideoRemainText();
+      closeVideoSaveUsageModal();
+      // 保存视频写真成功态在「保存高清写真-视频」页展示
+      sessionStorage.setItem("saveVideoFromHdPreview", "1");
+      sessionStorage.setItem("videoSavedSuccess", "1");
+      window.location.href = "保存高清写真-视频.html?from=preview&saved=1";
+    }
+
+    // 根据进入的模版类型（图片/视频）切换「购买写真」弹窗展示内容与默认选中项
+    function applyPkgModalType() {
+      const imageSections = document.querySelectorAll("#pkgModal .pkg-section-image");
+      const videoSections = document.querySelectorAll("#pkgModal .pkg-section-video");
+      imageSections.forEach((el) => (el.style.display = isVideoTemplate ? "none" : "block"));
+      videoSections.forEach((el) => (el.style.display = isVideoTemplate ? "block" : "none"));
+
+      // 清掉所有选中态，再给当前类型设置默认选中（默认单张）
+      document.querySelectorAll("#pkgModal .single-row, #pkgModal .package-item").forEach((el) => {
+        el.classList.remove("highlight");
+      });
+
+      const defaultRow = isVideoTemplate
+        ? document.querySelector("#pkgModal .pkg-section-video .single-row") || document.querySelector("#pkgModal .pkg-section-video .package-item")
+        : document.querySelector("#pkgModal .pkg-section-image .single-row") || document.querySelector("#pkgModal .pkg-section-image .package-item");
+
+      if (defaultRow) {
+        defaultRow.classList.add("highlight");
+        updatePayBarFrom(defaultRow);
+      }
+    }
+
+    applyPkgModalType();
+
+    document.querySelectorAll("#pkgModal .single-row, #pkgModal .package-item").forEach((row) => {
+      row.addEventListener("click", () => {
+        document.querySelectorAll("#pkgModal .single-row, #pkgModal .package-item").forEach(r => r.classList.remove("highlight"));
+        row.classList.add("highlight");
+        updatePayBarFrom(row);
+      });
+    });
+
+    if (btnSaveHd) {
+      btnSaveHd.addEventListener("click", saveHighDefPhoto);
+    }
+    if (btnSaveEmoji) {
+      btnSaveEmoji.addEventListener("click", function() {
+        showToast("保存成功");
+      });
+    }
+    if (btnMorePhoto) {
+      btnMorePhoto.addEventListener("click", () => {
+        pendingHighDefSave = false;
+        pendingReopenUsageAfterPurchase = false;
+        pendingVideoSavePurchase = false;
+        if (pkgModal) pkgModal.classList.add("active");
+      });
+    }
+    if (hdSaveUsageModal) {
+      hdSaveUsageModal.addEventListener("click", (e) => {
+        if (e.target === hdSaveUsageModal) closeHdSaveUsageModal();
+      });
+    }
+    if (hdSaveUsageClose) {
+      hdSaveUsageClose.addEventListener("click", (e) => {
+        e.stopPropagation();
+        closeHdSaveUsageModal();
+      });
+    }
+    if (btnHdSaveConfirm) {
+      btnHdSaveConfirm.addEventListener("click", () => confirmHdSaveAndGo());
+    }
+    if (btnHdSaveBuyMore) {
+      btnHdSaveBuyMore.addEventListener("click", () => {
+        closeHdSaveUsageModal();
+        pendingReopenUsageAfterPurchase = true;
+        pendingHighDefSave = false;
+        pendingVideoSavePurchase = false;
+        if (pkgModal) pkgModal.classList.add("active");
+      });
+    }
+    if (videoSaveUsageModal) {
+      videoSaveUsageModal.addEventListener("click", (e) => {
+        if (e.target === videoSaveUsageModal) closeVideoSaveUsageModal();
+      });
+    }
+    if (videoSaveUsageClose) {
+      videoSaveUsageClose.addEventListener("click", (e) => {
+        e.stopPropagation();
+        closeVideoSaveUsageModal();
+      });
+    }
+    if (btnVideoSaveConfirm) {
+      btnVideoSaveConfirm.addEventListener("click", () => confirmVideoSaveAndGo());
+    }
+    if (btnVideoSaveBuyMore) {
+      btnVideoSaveBuyMore.addEventListener("click", () => {
+        closeVideoSaveUsageModal();
+        pendingVideoSavePurchase = true;
+        pendingHighDefSave = false;
+        pendingReopenUsageAfterPurchase = false;
+        if (pkgModal) pkgModal.classList.add("active");
+      });
+    }
+    if (pkgModal) {
+      pkgModal.addEventListener("click", (e) => {
+        if (e.target === pkgModal) {
+          pkgModal.classList.remove("active");
+          const reopenPhoto = pendingReopenUsageAfterPurchase;
+          const reopenVideo = pendingVideoSavePurchase;
+          pendingHighDefSave = false;
+          pendingReopenUsageAfterPurchase = false;
+          pendingVideoSavePurchase = false;
+          if (reopenPhoto) openHdSaveUsageModal();
+          if (reopenVideo && currentVideoCount > 0) openVideoSaveUsageModal();
+        }
+      });
+    }
+    if (pkgModalClose) {
+      pkgModalClose.addEventListener("click", (e) => {
+        e.stopPropagation();
+        if (pkgModal) pkgModal.classList.remove("active");
+        const reopenPhoto = pendingReopenUsageAfterPurchase;
+        const reopenVideo = pendingVideoSavePurchase;
+        pendingHighDefSave = false;
+        pendingReopenUsageAfterPurchase = false;
+        pendingVideoSavePurchase = false;
+        if (reopenPhoto) openHdSaveUsageModal();
+        if (reopenVideo && currentVideoCount > 0) openVideoSaveUsageModal();
+      });
+    }
+    if (pkgConfirm) {
+      pkgConfirm.addEventListener("click", () => {
+        if (pkgConfirm.classList.contains("loading")) return;
+        pkgConfirm.classList.add("loading");
+        const oldText = pkgConfirmText ? pkgConfirmText.textContent : pkgConfirm.textContent;
+        if (pkgConfirmText) {
+          pkgConfirmText.textContent = "支付中…";
+        } else {
+          pkgConfirm.textContent = "支付中…";
+        }
+        const spinner = document.createElement("div");
+        spinner.className = "pay-loading-dot";
+        pkgConfirm.insertBefore(spinner, pkgConfirm.firstChild);
+
+        setTimeout(() => {
+          const addCount = parseInt(pkgConfirm.dataset.count || "0", 10);
+          if (!Number.isNaN(addCount) && addCount > 0) {
+            if (pendingVideoSavePurchase) {
+              currentVideoCount += addCount;
+              updateVideoRemainText();
+            } else {
+              currentPhotoCount += addCount;
+              updatePhotoRemainText();
+            }
+          }
+          pkgConfirm.classList.remove("loading");
+          if (spinner.parentNode) spinner.parentNode.removeChild(spinner);
+          if (pkgConfirmText) {
+            pkgConfirmText.textContent = oldText || "去支付";
+          } else {
+            pkgConfirm.textContent = oldText || "去支付";
+          }
+          if (pkgModal) pkgModal.classList.remove("active");
+
+          /* 购买成功：直接打开「保存高清写真」确认弹窗 */
+          if (pendingHighDefSave) {
+            pendingHighDefSave = false;
+            openHdSaveUsageModal();
+          } else if (pendingReopenUsageAfterPurchase) {
+            pendingReopenUsageAfterPurchase = false;
+            openHdSaveUsageModal();
+          } else if (pendingVideoSavePurchase) {
+            pendingVideoSavePurchase = false;
+            openVideoSaveUsageModal();
+          } else {
+            showToast("支付成功");
+          }
+        }, 1200);
+      });
+    }
+    updatePhotoRemainText();
+    updateVideoRemainText();
+    updateVideoTemplateContent();
+
+    if (btnNotSatisfied && guideMask) {
+      btnNotSatisfied.addEventListener("click", () => {
+        guideMask.classList.add("active");
+      });
+      guideChangeTpl.addEventListener("click", () => {
+        // 跳转到模版列表首页
+        window.location.href = "萌宠秀.html";
+      });
+      guideMask.addEventListener("click", (e) => {
+        if (e.target === guideMask) {
+          guideMask.classList.remove("active");
+        }
+      });
+      guideGoUpload.addEventListener("click", () => {
+        // 引导用户回到生成写真页重新上传
+        window.location.href = "生成写真.html";
+      });
+    }
+  </script>
+</body>
+</html>
+
