@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>产品核心 - 星光树脂制品（昆山）有限公司</title>
+  <style>
+    :root{--primary:#0B2D5B;--primary-light:#1A4A8A;--accent:#C5A036;--accent-light:#E8C547;--text:#1A1A2E;--text-muted:#5A6270;--bg:#F5F7FA;--white:#FFF;--border:#E2E8F0;--shadow:0 4px 24px rgba(11,45,91,0.08);--radius:8px}
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:"PingFang SC","Microsoft YaHei",sans-serif;color:var(--text);background:var(--bg);line-height:1.7}
+    a{text-decoration:none;color:inherit}
+    [id]{scroll-margin-top:88px}
+    .header{background:var(--white);box-shadow:0 2px 12px rgba(0,0,0,.06);position:sticky;top:0;z-index:1000}
+    .header-inner{max-width:1280px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:72px}
+    .logo{display:flex;align-items:center;gap:12px}.logo-img{height:48px;width:auto;object-fit:contain;display:block}
+    .logo-text{font-size:15px;line-height:1.3;font-weight:700;color:var(--primary)}.logo-sub{font-size:10px;line-height:1.3;color:var(--text-muted)}
+    .nav{display:flex;gap:4px}.nav>li{list-style:none;position:relative}.nav>li>a{display:block;padding:10px 16px;font-size:14px;border-radius:var(--radius);transition:all .2s}.nav>li>a:hover,.nav>li>a.active{background:var(--primary);color:var(--white)}
+    .lang-switch{display:flex;border:1px solid var(--border);border-radius:20px;overflow:hidden;flex-shrink:0}.lang-btn{padding:6px 14px;font-size:13px;border:none;background:transparent;color:var(--text-muted);cursor:pointer;font-family:inherit;transition:all .2s}.lang-btn.active{background:var(--primary);color:var(--white)}
+    .page-hero{background:linear-gradient(135deg,var(--primary),var(--primary-light));padding:72px 24px 64px;color:var(--white);text-align:center}
+    .page-hero h1{font-size:40px;margin-bottom:12px}.page-hero p{font-size:16px;opacity:.88;max-width:640px;margin:0 auto}
+    .section{padding:72px 24px}.section-alt{background:var(--white)}
+    .section-inner{max-width:1280px;margin:0 auto}
+    .section-header{margin-bottom:40px}
+    .section-title{font-size:28px;font-weight:700;color:var(--primary);margin-bottom:10px;line-height:1.35}
+    .section-desc{color:var(--text-muted);font-size:15px;max-width:860px;line-height:1.9}
+    .product-lead{font-size:15px;color:var(--text-muted);margin-bottom:28px;line-height:1.85;max-width:900px}
+    .content-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:stretch;margin-bottom:36px}
+    .desc-box{background:var(--white);border-radius:14px;padding:32px;box-shadow:var(--shadow);border:1px solid rgba(11,45,91,.06)}
+    .section-alt .desc-box{background:var(--bg)}
+    .desc-box h4{font-size:18px;color:var(--primary);margin-bottom:14px}
+    .desc-box p{font-size:14px;color:var(--text-muted);margin-bottom:12px;line-height:1.85}
+    .desc-box p:last-child{margin-bottom:0}
+    .shape-placeholder{background:linear-gradient(135deg,#e8edf3,#d0d9e6);border-radius:14px;min-height:260px;display:flex;align-items:center;justify-content:center;color:var(--text-muted);font-size:14px;text-align:center;line-height:1.8;border:2px dashed #c0c8d4;padding:24px}
+    .industries-label{font-size:16px;font-weight:700;color:var(--primary);margin-bottom:16px}
+    .industries{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:14px}
+    .industry-card{background:var(--white);border-radius:12px;padding:20px 16px;text-align:center;box-shadow:var(--shadow);border:1px solid rgba(11,45,91,.06);transition:transform .2s}
+    .section-alt .industry-card{background:var(--bg)}
+    .industry-card:hover{transform:translateY(-3px)}
+    .industry-icon{font-size:28px;margin-bottom:8px;line-height:1}
+    .industry-card h5{font-size:14px;color:var(--primary);font-weight:600;line-height:1.4}
+    .eco-card{background:var(--white);border-radius:16px;padding:36px 40px;box-shadow:var(--shadow);border:1px solid rgba(11,45,91,.06);border-top:4px solid #40916C}
+    .section-alt .eco-card{background:var(--bg)}
+    .biomass-board{background:var(--white);border-radius:16px;padding:40px 36px 32px;box-shadow:var(--shadow);border:1px solid rgba(11,45,91,.06);border-top:4px solid #40916C}
+    .section-alt .biomass-board{background:var(--bg)}
+    .biomass-board-title{font-size:24px;font-weight:700;color:var(--primary);text-align:center;margin-bottom:10px;line-height:1.4}
+    .biomass-board-subtitle{font-size:15px;color:var(--text-muted);text-align:center;margin-bottom:36px;line-height:1.85;max-width:720px;margin-left:auto;margin-right:auto}
+    .biomass-columns{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .biomass-col{display:flex;flex-direction:column;align-items:center;gap:16px}
+    .biomass-inputs{display:grid;grid-template-columns:1fr 1fr;gap:12px;width:100%;background:var(--bg);border:1px solid rgba(11,45,91,.08);border-radius:12px;padding:16px}
+    .section-alt .biomass-inputs{background:var(--white)}
+    .biomass-input{display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center}
+    .biomass-input-media{width:100%;aspect-ratio:4/3;background:linear-gradient(135deg,#e8edf3,#d0d9e6);border-radius:8px;border:1px dashed #c0c8d4;display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--text-muted);padding:8px;line-height:1.5}
+    .biomass-input-label{font-size:13px;font-weight:600;color:var(--primary);line-height:1.45}
+    .biomass-arrow{font-size:28px;color:#40916C;line-height:1;opacity:.75}
+    .biomass-output{display:flex;flex-direction:column;align-items:center;gap:12px;width:100%;text-align:center}
+    .biomass-output-media{width:100%;aspect-ratio:4/2;background:linear-gradient(135deg,#e8edf3,#d0d9e6);border-radius:12px;border:1px dashed #c0c8d4;display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--text-muted);padding:8px;line-height:1.5}
+    .biomass-output-label{font-size:14px;font-weight:700;color:var(--primary);line-height:1.45}
+    .biomass-poster{margin-top:32px;text-align:center}
+    .biomass-poster img{max-width:100%;height:auto;border-radius:12px;box-shadow:var(--shadow);border:1px solid rgba(11,45,91,.08)}
+    .biomass-poster-caption{margin-top:12px;font-size:13px;color:var(--text-muted)}
+    .other-card{background:var(--white);border-radius:16px;padding:36px 40px;box-shadow:var(--shadow);border:1px solid rgba(11,45,91,.06);border-top:4px solid #8B5E3C}
+    .section-alt .other-card{background:var(--bg)}
+    .other-block+.other-block{margin-top:48px;padding-top:48px;border-top:1px solid rgba(11,45,91,.1)}
+    .other-block-title{font-size:22px;font-weight:700;color:var(--primary);margin-bottom:8px;line-height:1.4}
+    .other-block-sub{font-size:14px;color:var(--text-muted);margin-bottom:28px}
+    .other-product{background:var(--bg);border-radius:14px;padding:28px 32px;margin-bottom:24px;border:1px solid rgba(11,45,91,.06)}
+    .section-alt .other-product{background:var(--white)}
+    .other-product:last-of-type{margin-bottom:0}
+    .other-product h4{font-size:18px;color:var(--primary);margin-bottom:8px;line-height:1.4}
+    .other-tagline{font-size:14px;color:var(--text-muted);margin-bottom:18px;line-height:1.85}
+    .other-label{font-size:14px;color:var(--text-muted);margin-bottom:14px;line-height:1.85;font-weight:600}
+    .other-badges{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px}
+    .other-badge{background:var(--white);border-radius:10px;padding:14px 12px;text-align:center;font-size:12px;color:var(--primary);font-weight:600;line-height:1.55;border:1px solid rgba(197,160,54,.25);box-shadow:0 2px 8px rgba(11,45,91,.04)}
+    .section-alt .other-badge{background:var(--bg)}
+    .other-checklist{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px 20px}
+    .other-checklist li{font-size:14px;color:var(--text-muted);padding-left:22px;position:relative;line-height:1.7}
+    .other-checklist li::before{content:"✓";position:absolute;left:0;color:#40916C;font-weight:700}
+    .other-feature-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:20px}
+    .other-feature-item{background:var(--white);border-radius:10px;padding:16px 12px;text-align:center;border:1px solid rgba(11,45,91,.08)}
+    .section-alt .other-feature-item{background:var(--bg)}
+    .other-feature-item strong{display:block;font-size:14px;color:var(--primary);margin-bottom:6px;line-height:1.45}
+    .other-feature-item span{font-size:12px;color:var(--text-muted);line-height:1.55}
+    .other-product-name{font-size:26px;font-weight:700;color:var(--primary);margin:16px 0 10px;line-height:1.35}
+    .other-product-name em{font-style:normal;color:#C45A11}
+    .other-value{font-size:15px;color:var(--text);margin-bottom:20px;line-height:1.85}
+    .other-value strong{color:var(--primary)}
+    .other-props{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px}
+    .other-prop-tag{background:rgba(11,45,91,.06);color:var(--primary);font-size:13px;padding:6px 14px;border-radius:20px;line-height:1.4}
+    .other-uses{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .other-use-item{background:var(--bg);border-radius:12px;padding:20px;text-align:center;border:1px solid rgba(11,45,91,.06)}
+    .section-alt .other-use-item{background:var(--white)}
+    .other-use-item strong{display:block;font-size:15px;color:var(--primary);margin-bottom:6px}
+    .other-use-item span{font-size:13px;color:var(--text-muted);line-height:1.6}
+    .clients-intro{text-align:center;color:var(--text-muted);margin-bottom:40px;font-size:16px;line-height:1.9;max-width:860px;margin-left:auto;margin-right:auto}
+    .logo-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:20px}
+    .client-logo{background:var(--bg);border-radius:12px;height:100px;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow);font-size:13px;color:var(--text-muted);border:1px solid rgba(11,45,91,.06);transition:transform .2s,border-color .2s}
+    .section-alt .client-logo{background:var(--white)}
+    .client-logo:hover{transform:scale(1.03);border-color:var(--accent)}
+    .clients-note{background:rgba(197,160,54,.1);border:1px solid rgba(197,160,54,.35);border-radius:12px;padding:20px;text-align:center;margin-top:32px;font-size:14px;color:var(--text-muted)}
+    .footer{background:linear-gradient(180deg,#0c2f5c 0%,#071E3D 100%);color:rgba(255,255,255,.78);padding:56px 24px 28px}
+    .footer-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:minmax(280px,340px) 1fr;gap:48px 56px;align-items:start}
+    .footer-brand-head{display:flex;align-items:center;gap:14px;margin-bottom:20px}.footer-brand-head:hover{opacity:.92}
+    .footer-brand-logo{height:52px;width:auto;object-fit:contain;display:block;flex-shrink:0}
+    .footer-brand-cn{font-size:18px;font-weight:700;color:var(--white);line-height:1.35;margin-bottom:4px}
+    .footer-brand-en{font-size:10px;color:rgba(255,255,255,.55);line-height:1.4;letter-spacing:.02em}
+    .footer-brand-list{list-style:none;display:flex;flex-direction:column;gap:12px}
+    .footer-brand-list li{display:flex;align-items:flex-start;gap:10px;font-size:13px;line-height:1.65;color:rgba(255,255,255,.82)}
+    .footer-brand-icon{width:18px;flex-shrink:0;text-align:center;opacity:.85;margin-top:2px}
+    .footer-brand-list .footer-brand-divider{border-top:1px solid rgba(255,255,255,.12);padding-top:16px;margin-top:4px}
+    .footer-brand-list strong{color:var(--white);font-weight:600}
+    .footer-brand-list a{color:var(--accent-light)}
+    .footer-nav{display:grid;grid-template-columns:repeat(6,1fr);gap:16px 20px}
+    .footer-col h4{color:var(--white);font-size:15px;font-weight:600;margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,.35);letter-spacing:.02em}
+    .footer-col ul{list-style:none}.footer-col ul li{margin-bottom:10px}.footer-col ul li:last-child{margin-bottom:0}
+    .footer-col ul a{font-size:12px;line-height:1.55;color:rgba(255,255,255,.72);transition:color .2s;display:inline-block}.footer-col ul a:hover{color:var(--accent-light)}
+    .footer-bottom{max-width:1280px;margin:36px auto 0;padding-top:24px;border-top:1px solid rgba(255,255,255,.12);text-align:center;font-size:12px;color:rgba(255,255,255,.45)}
+    .prototype-badge{position:fixed;bottom:16px;right:16px;background:var(--accent);color:var(--primary);padding:6px 14px;border-radius:20px;font-size:11px;font-weight:700;z-index:9999}
+    @media(max-width:1100px){.footer-nav{grid-template-columns:repeat(3,1fr)}.biomass-columns{grid-template-columns:1fr}.other-badges{grid-template-columns:1fr}.other-feature-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:768px){.nav{display:none}.footer-inner{grid-template-columns:1fr;gap:36px}.footer-nav{grid-template-columns:repeat(2,1fr)}.content-grid,.biomass-columns,.other-checklist,.other-uses{grid-template-columns:1fr}.other-feature-grid{grid-template-columns:1fr}.logo-grid{grid-template-columns:repeat(2,1fr)}.section{padding:56px 20px}.page-hero h1{font-size:28px}.other-card{padding:28px 20px}}
+  </style>
+</head>
+<body>
+  <div class="prototype-badge">原型 v1.0</div>
+  <header class="header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <img src="img/logo.png" alt="STARLITE" class="logo-img">
+        <div>
+          <div class="logo-text">星光树脂制品（昆山）有限公司</div>
+          <div class="logo-sub">Starlite Plastic Products（Kunshan）Co.,Ltd.</div>
+        </div>
+      </a>
+      <ul class="nav">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="innovation.html">创新中心</a></li>
+        <li><a href="products.html" class="active">产品核心</a></li>
+        <li><a href="about.html">关于我们</a></li>
+        <li><a href="join.html">加入我们</a></li>
+        <li><a href="contact.html">联系我们</a></li>
+      </ul>
+      <div class="lang-switch"><button class="lang-btn active" type="button">中文</button><button class="lang-btn" type="button">EN</button></div>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <h1>产品核心</h1>
+    <p>高性能改性树脂材料 — 滑动 · 传动 · 制动 · 密封</p>
+  </section>
+
+  <!-- 热固性树脂（BAKES®）性能 -->
+  <section class="section" id="bakes">
+    <div class="section-inner">
+      <div class="section-header">
+        <h2 class="section-title">热固性树脂（BAKES®）性能</h2>
+      </div>
+      <div class="content-grid">
+        <div class="desc-box">
+          <p>基于本公司独特的材料设计技术，热硬化树脂酚醛树脂以及环氧树脂为基础，将有机・无机纤维等基材及填充材进行混合，发挥优越的滑动特性、耐热性、力学特性的功能性积层材料。</p>
+        </div>
+        <div class="shape-placeholder">产品形状示意图<br>（文字替换为中文）</div>
+      </div>
+      <p class="industries-label">行业应用领域</p>
+      <div class="industries">
+        <div class="industry-card"><div class="industry-icon">🚢</div><h5>船舶</h5></div>
+        <div class="industry-card"><div class="industry-icon">🏭</div><h5>钢铁</h5></div>
+        <div class="industry-card"><div class="industry-icon">⚙️</div><h5>产业机械</h5></div>
+        <div class="industry-card"><div class="industry-icon">📄</div><h5>造纸领域</h5></div>
+        <div class="industry-card"><div class="industry-icon">🚄</div><h5>轨道交通车辆领域</h5></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 热固性树脂（ALP®）性能 -->
+  <section class="section section-alt" id="alp">
+    <div class="section-inner">
+      <div class="section-header">
+        <h2 class="section-title">热固性树脂（ALP®）性能</h2>
+      </div>
+      <div class="content-grid">
+        <div class="desc-box">
+          <p>以拥有低摩擦特性、耐热性、耐药品性、非粘着性等多种特性的聚四氟乙烯（PTFE）为基础，运用独自的高性能树脂材料技术以及材料设计技术提高耐磨耗性、压缩特性等的材料。</p>
+          <p>通过无润滑发挥着优越的滑动特性，适合所有的轴承、衬垫、密封件类。另，聚酰亚胺(PI)以及超高分子量聚乙烯(UHMWPE)等工程塑料为基础的材料也列入到阵营中。拥有丰富经验的人员，将根据产品用途从适合的材料及形状的选定、到评价分析技术提供最佳方案。从原料的混合、成形到机械加工的一条龙生产，从大量生产到多品种少量生产，可以广泛对应定制的需求。</p>
+        </div>
+        <div class="shape-placeholder">产品形状示意图<br>（文字替换为中文）</div>
+      </div>
+      <p class="industries-label">行业应用领域</p>
+      <div class="industries">
+        <div class="industry-card"><div class="industry-icon">🔩</div><h5>压缩机</h5></div>
+        <div class="industry-card"><div class="industry-icon">🍽️</div><h5>食品机械</h5></div>
+        <div class="industry-card"><div class="industry-icon">🚗</div><h5>汽车部品</h5></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 热塑性树脂（S-BEAR®）性能 -->
+  <section class="section" id="sbear">
+    <div class="section-inner">
+      <div class="section-header">
+        <h2 class="section-title">热塑性树脂（S-BEAR®）性能</h2>
+      </div>
+      <div class="content-grid">
+        <div class="desc-box">
+          <p>运用高性能树脂技术、本公司独特的材料设计技术、以及材料生产技术，以工程塑料为基础开发的注塑成形用高性能材料。在摩擦学特性的基础上，附加耐热性、导电性、难燃性等特性进行材料设计，与精密注塑成形技术相结合，可根据客户的需求大量生产的高性能产品。</p>
+        </div>
+        <div class="shape-placeholder">产品形状示意图<br>（文字替换为中文）</div>
+      </div>
+      <p class="industries-label">行业应用领域</p>
+      <div class="industries">
+        <div class="industry-card"><div class="industry-icon">🖨️</div><h5>自动办公领域</h5></div>
+        <div class="industry-card"><div class="industry-icon">🚗</div><h5>汽车领域</h5></div>
+        <div class="industry-card"><div class="industry-icon">⚡</div><h5>产业机电</h5></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 非食用生物质 -->
+  <section class="section section-alt" id="biomass">
+    <div class="section-inner">
+      <div class="section-header">
+        <h2 class="section-title">非食用生物质摩擦材料</h2>
+      </div>
+      <div class="biomass-board">
+        <div class="biomass-columns">
+          <div class="biomass-col">
+            <div class="biomass-inputs">
+              <div class="biomass-input">
+                <div class="biomass-input-media">亚麻纤维<br>（图片待替换）</div>
+                <div class="biomass-input-label">亚麻纤维</div>
+              </div>
+              <div class="biomass-input">
+                <div class="biomass-input-media">生物质树脂<br>（图片待替换）</div>
+                <div class="biomass-input-label">生物质树脂</div>
+              </div>
+            </div>
+            <div class="biomass-arrow" aria-hidden="true">↓</div>
+            <div class="biomass-output">
+              <div class="biomass-output-media">汽车外板用植物FRP<br>（图片待替换）</div>
+              <div class="biomass-output-label">汽车外板用植物FRP</div>
+            </div>
+          </div>
+          <div class="biomass-col">
+            <div class="biomass-inputs">
+              <div class="biomass-input">
+                <div class="biomass-input-media">棉纤维<br>（图片待替换）</div>
+                <div class="biomass-input-label">棉纤维</div>
+              </div>
+              <div class="biomass-input">
+                <div class="biomass-input-media">生物质酚醛树脂<br>（图片待替换）</div>
+                <div class="biomass-input-label">生物质酚醛树脂</div>
+              </div>
+            </div>
+            <div class="biomass-arrow" aria-hidden="true">↓</div>
+            <div class="biomass-output">
+              <div class="biomass-output-media">生物质BAKES<br>（图片待替换）</div>
+              <div class="biomass-output-label">生物质BAKES</div>
+            </div>
+          </div>
+          <div class="biomass-col">
+            <div class="biomass-inputs">
+              <div class="biomass-input">
+                <div class="biomass-input-media">树脂用非可食植物<br>（图片待替换）</div>
+                <div class="biomass-input-label">树脂用非可食植物</div>
+              </div>
+              <div class="biomass-input">
+                <div class="biomass-input-media">天然原料添加剂<br>（图片待替换）</div>
+                <div class="biomass-input-label">天然原料添加剂</div>
+              </div>
+            </div>
+            <div class="biomass-arrow" aria-hidden="true">↓</div>
+            <div class="biomass-output">
+              <div class="biomass-output-media">生物质S-BEAR<br>（图片待替换）</div>
+              <div class="biomass-output-label">生物质S-BEAR</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 暑热灾害对策用产品及其他事业 -->
+  <section class="section" id="other">
+    <div class="section-inner">
+      <div class="section-header">
+        <h2 class="section-title">暑热灾害对策用产品及其他事业</h2>
+      </div>
+      <div class="other-card">
+
+        <!-- 灾害·暑热对策用产品 -->
+        <div class="other-block">
+          <h3 class="other-block-title">灾害·暑热对策用产品</h3>
+          <p class="other-block-sub">面向施工现场与灾害场景，提供暑热管理与应急卫生解决方案</p>
+
+          <div class="other-product">
+            <h4>eMET — 活用中暑数据的提案</h4>
+            <p class="other-tagline">从中暑风险数据中发现现场的暑热课题 → 改善</p>
+            <div class="other-badges">
+              <div class="other-badge">NETIS 认定</div>
+              <div class="other-badge">20 年佩戴者超 10,000 人<br>中暑发症数 0 件</div>
+              <div class="other-badge">举办中暑对策讲座<br>积累丰富使用实绩</div>
+            </div>
+            <ul class="other-checklist">
+              <li>庞大数据的可视化</li>
+              <li>eMET 的稼动状况管理</li>
+              <li>现场改善</li>
+              <li>把握每个人的风险</li>
+            </ul>
+          </div>
+
+          <div class="other-product">
+            <h4>灾难用厕所解决方案</h4>
+            <p class="other-tagline">万一发生某种状况时，谁都能把它变成日常用的厕所，即简易厕所</p>
+            <ul class="other-checklist">
+              <li>部品少，5 分钟简单组装</li>
+              <li>有很多减轻不安的装置</li>
+            </ul>
+            <div class="other-feature-grid">
+              <div class="other-feature-item">
+                <strong>耐风</strong>
+                <span>户外使用时不易被风吹倒</span>
+              </div>
+              <div class="other-feature-item">
+                <strong>里面不透 · 里面带锁</strong>
+                <span>保障隐私与安全</span>
+              </div>
+              <div class="other-feature-item">
+                <strong>带灯</strong>
+                <span>内部照明，夜间也可安心使用</span>
+              </div>
+              <div class="other-feature-item">
+                <strong>与地面形成平面</strong>
+                <span>轮椅等也可方便进出</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- 其他事业 -->
+        <div class="other-block">
+          <h3 class="other-block-title">其他事业 · STARLITE 工业整体</h3>
+          <p class="other-block-sub">多功能聚脲涂层。喷到的东西上面 + 其他功能</p>
+          <div class="other-product-name">STARLITE <em>BARIAS</em>®</div>
+          <p class="other-value">如果喷到发泡苯乙烯等上面，变成 <strong>轻量 × 坚韧</strong> 的素材。</p>
+          <p class="other-label">也加上了其他功能</p>
+          <div class="other-props">
+            <span class="other-prop-tag">耐药品</span>
+            <span class="other-prop-tag">控制附着</span>
+            <span class="other-prop-tag">耐磨损</span>
+            <span class="other-prop-tag">隔热</span>
+            <span class="other-prop-tag">耐冲击性</span>
+            <span class="other-prop-tag">防锈</span>
+            <span class="other-prop-tag">耐候性</span>
+            <span class="other-prop-tag">外观性</span>
+          </div>
+          <p class="other-label">用途提案</p>
+          <div class="other-uses">
+            <div class="other-use-item">
+              <strong>工厂作业用脚手架</strong>
+              <span>轻量且坚韧的结构件应用</span>
+            </div>
+            <div class="other-use-item">
+              <strong>游乐设施</strong>
+              <span>安全防护与外观兼顾的部件应用</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 合作客户 -->
+  <section class="section section-alt" id="clients">
+    <div class="section-inner">
+      <div class="section-header">
+        <h2 class="section-title">合作客户</h2>
+      </div>
+      <div class="logo-grid">
+        <div class="client-logo">客户 LOGO 1</div><div class="client-logo">客户 LOGO 2</div><div class="client-logo">客户 LOGO 3</div><div class="client-logo">客户 LOGO 4</div><div class="client-logo">客户 LOGO 5</div>
+        <div class="client-logo">客户 LOGO 6</div><div class="client-logo">客户 LOGO 7</div><div class="client-logo">客户 LOGO 8</div><div class="client-logo">客户 LOGO 9</div><div class="client-logo">客户 LOGO 10</div>
+        <div class="client-logo">客户 LOGO 11</div><div class="client-logo">客户 LOGO 12</div><div class="client-logo">客户 LOGO 13</div><div class="client-logo">客户 LOGO 14</div><div class="client-logo">客户 LOGO 15</div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-brand-head">
+          <img src="img/logo.png" alt="STARLITE" class="footer-brand-logo">
+          <div>
+            <div class="footer-brand-cn">星光树脂</div>
+            <div class="footer-brand-en">Starlite Plastic Products</div>
+          </div>
+        </a>
+        <ul class="footer-brand-list">
+          <li><span class="footer-brand-icon">📞</span><span><br>+86-512-57641220 · 传真 +86-512-57641211</span></li>
+          <li><span class="footer-brand-icon">📍</span><span>江苏省昆山市周市镇陆杨迎宾西路2号 · 邮编 215313</span></li>
+          <li class="footer-brand-divider"><span class="footer-brand-icon">📞</span><span><strong>星光工业株式会社</strong><br>+816-6956-2240 · <a href="https://starlite.co.jp/" target="_blank" rel="noopener">starlite.co.jp</a></span></li>
+          <li><span class="footer-brand-icon">📍</span><span>日本国大阪府大阪市旭区大宫4丁目23番7号 · 邮编 535-0002</span></li>
+        </ul>
+      </div>
+      <div class="footer-nav">
+        <div class="footer-col">
+          <h4>首页</h4>
+          <ul>
+            <li><a href="index.html#intro">企业简介</a></li>
+            <li><a href="index.html#history">发展历程</a></li>
+            <li><a href="index.html#logo">品牌标识解说</a></li>
+            <li><a href="index.html#vision">理念&愿景&使命</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>创新中心</h4>
+          <ul>
+            <li><a href="innovation.html#timeline">摩擦学技术开发轨迹</a></li>
+            <li><a href="innovation.html#tribology">STARLITE 摩擦学技术理念</a></li>
+            <li><a href="innovation.html#partner">技术开发型商务伙伴</a></li>
+            <li><a href="innovation.html#equipment">试验分析仪器&检测设备</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>产品核心</h4>
+          <ul>
+            <li><a href="products.html#bakes">热固性树脂（BAKES®）性能</a></li>
+            <li><a href="products.html#alp">热固性树脂（ALP®）性能</a></li>
+            <li><a href="products.html#sbear">热塑性树脂（S-BEAR®）性能</a></li>
+            <li><a href="products.html#biomass">非食用生物质摩擦材料</a></li>
+            <li><a href="products.html#other">暑热灾害对策用产品及其他事业</a></li>
+            <li><a href="products.html#clients">合作客户</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>关于我们</h4>
+          <ul>
+            <li><a href="about.html#honors">企业荣誉</a></li>
+            <li><a href="about.html#cert">认证资质</a></li>
+            <li><a href="about.html#sustain">可持续发展</a></li>
+            <li><a href="about.html#news">企业动态</a></li>
+            <li><a href="about.html#social">社会贡献</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>加入我们</h4>
+          <ul>
+            <li><a href="join.html#welfare">人文关怀</a></li>
+            <li><a href="join.html#training">教育培训</a></li>
+            <li><a href="join.html#activities">员工活动</a></li>
+            <li><a href="join.html#careers">招贤纳士</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>联系我们</h4>
+          <ul>
+            <li><a href="contact.html#info">联系方式</a></li>
+            <li><a href="contact.html#map">电子地图</a></li>
+            <li><a href="contact.html#message">客户留言</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 星光树脂制品（昆山）有限公司 · 网站原型</div>
+  </footer>
+<script>
+document.querySelectorAll('.lang-switch').forEach(function(s){s.querySelectorAll('.lang-btn').forEach(function(b){b.addEventListener('click',function(){s.querySelectorAll('.lang-btn').forEach(function(x){x.classList.remove('active')});b.classList.add('active')})})});
+</script>
+</body>
+</html>

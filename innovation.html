@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>创新中心 - 星光树脂制品（昆山）有限公司</title>
+  <style>
+    :root { --primary:#0B2D5B; --primary-light:#1A4A8A; --accent:#C5A036; --accent-light:#E8C547; --text:#1A1A2E; --text-muted:#5A6270; --bg:#F5F7FA; --white:#FFF; --border:#E2E8F0; --shadow:0 4px 24px rgba(11,45,91,0.08); --radius:8px; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { font-family:"PingFang SC","Microsoft YaHei",sans-serif; color:var(--text); background:var(--bg); line-height:1.7; }
+    a { text-decoration:none; color:inherit; }
+    [id] { scroll-margin-top:88px; }
+    .header { background:var(--white); box-shadow:0 2px 12px rgba(0,0,0,.06); position:sticky; top:0; z-index:1000; }
+    .header-inner { max-width:1280px; margin:0 auto; padding:0 24px; display:flex; align-items:center; justify-content:space-between; height:72px; }
+    .logo { display:flex; align-items:center; gap:12px; }
+    .logo-img { height:48px; width:auto; object-fit:contain; display:block; }
+    .logo-text { font-size:15px; line-height:1.3; font-weight:700; color:var(--primary); }
+    .logo-sub { font-size:10px; line-height:1.3; color:var(--text-muted); font-weight:400; }
+    .nav { display:flex; gap:4px; }
+    .nav > li { list-style:none; position:relative; }
+    .nav > li > a { display:block; padding:10px 16px; font-size:14px; color:var(--text); border-radius:var(--radius); transition:all .2s; }
+    .nav > li > a:hover, .nav > li > a.active { background:var(--primary); color:var(--white); }
+    .lang-switch { display:flex; border:1px solid var(--border); border-radius:20px; overflow:hidden; flex-shrink:0; }
+    .lang-btn { padding:6px 14px; font-size:13px; border:none; background:transparent; color:var(--text-muted); cursor:pointer; font-family:inherit; transition:all .2s; }
+    .lang-btn.active { background:var(--primary); color:var(--white); }
+    .page-hero { background:linear-gradient(135deg,var(--primary),var(--primary-light)); padding:72px 24px 64px; color:var(--white); text-align:center; }
+    .page-hero h1 { font-size:40px; margin-bottom:12px; }
+    .page-hero p { font-size:16px; opacity:.85; max-width:640px; margin:0 auto; }
+    .section { padding:72px 24px; }
+    .section-alt { background:var(--white); }
+    .section-inner { max-width:1280px; margin:0 auto; }
+    .section-header { margin-bottom:40px; }
+    .section-title { font-size:28px; font-weight:700; color:var(--primary); margin-bottom:10px; }
+    .section-desc { color:var(--text-muted); font-size:15px; max-width:860px; line-height:1.9; }
+    .intro-banner { background:var(--white); border-radius:16px; padding:40px 48px; box-shadow:var(--shadow); text-align:center; margin:-32px auto 0; max-width:960px; position:relative; z-index:2; border:1px solid rgba(11,45,91,.06); }
+    .intro-banner p { font-size:17px; color:var(--text-muted); line-height:1.95; }
+    .core-banner { background:var(--primary); color:var(--white); border-radius:16px; padding:40px; margin-bottom:32px; }
+    .core-banner h3 { font-size:20px; margin-bottom:12px; }
+    .core-banner p { opacity:.88; font-size:15px; line-height:1.9; max-width:900px; }
+    .core-tags { display:flex; flex-wrap:wrap; gap:12px; margin-top:20px; }
+    .core-tag { background:rgba(255,255,255,.12); padding:6px 20px; border-radius:24px; font-size:13px; font-weight:600; border:1px solid rgba(255,255,255,.2); }
+    .pillars { display:grid; grid-template-columns:repeat(2,1fr); gap:20px; }
+    .pillar { background:var(--white); border-radius:14px; padding:28px; box-shadow:var(--shadow); border-top:4px solid var(--accent); }
+    .section-alt .pillar { background:var(--bg); }
+    .pillar-icon { font-size:28px; margin-bottom:12px; }
+    .pillar h4 { font-size:18px; color:var(--primary); margin-bottom:12px; }
+    .pillar ul { list-style:none; }
+    .pillar li { font-size:14px; color:var(--text-muted); padding:7px 0 7px 18px; position:relative; border-bottom:1px solid rgba(0,0,0,.05); }
+    .pillar li:last-child { border-bottom:none; }
+    .pillar li::before { content:"◎"; position:absolute; left:0; color:var(--accent); font-size:10px; top:10px; }
+    .partner-chain-visual { position:relative; max-width:980px; margin:0 auto; min-height:540px; padding:20px 12px 40px; }
+    .partner-orbit { position:absolute; inset:0; width:100%; height:100%; pointer-events:none; z-index:0; }
+    .partner-orbit path, .partner-orbit ellipse { fill:none; stroke:#CBD5E1; stroke-width:1.5; stroke-dasharray:6 6; }
+    .partner-orbit .orbit-link { stroke-width:1.2; stroke-dasharray:4 5; opacity:.75; }
+    .partner-core { position:absolute; left:50%; bottom:48px; transform:translateX(-50%); width:132px; height:132px; border-radius:50%; background:linear-gradient(145deg,var(--primary-light),var(--primary)); color:var(--white); display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; box-shadow:0 12px 36px rgba(11,45,91,.28); z-index:3; }
+    .partner-core::before { content:""; position:absolute; inset:-14px; border-radius:50%; border:1px dashed rgba(11,45,91,.18); }
+    .partner-core::after { content:""; position:absolute; inset:-28px; border-radius:50%; border:1px dashed rgba(11,45,91,.1); }
+    .partner-core-icon { width:40px; height:40px; border-radius:50%; background:rgba(255,255,255,.15); display:flex; align-items:center; justify-content:center; font-size:20px; margin-bottom:8px; position:relative; z-index:1; }
+    .partner-core strong { font-size:15px; font-weight:700; line-height:1.35; position:relative; z-index:1; }
+    .partner-core span { font-size:12px; opacity:.85; margin-top:2px; position:relative; z-index:1; }
+    .partner-node { position:absolute; background:var(--white); border-radius:14px; padding:22px 24px 20px; box-shadow:var(--shadow); border:1px solid rgba(11,45,91,.06); z-index:2; width:300px; }
+    .partner-node::before { content:""; position:absolute; left:0; top:16px; bottom:16px; width:4px; border-radius:0 4px 4px 0; }
+    .partner-node-top { top:0; left:50%; transform:translateX(-50%); width:min(420px, calc(100% - 24px)); }
+    .partner-node-left { left:0; bottom:24px; }
+    .partner-node-right { right:0; bottom:24px; }
+    .partner-node-head { display:flex; align-items:center; gap:12px; margin-bottom:16px; padding-left:8px; }
+    .partner-node-icon { width:44px; height:44px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:22px; flex-shrink:0; }
+    .partner-node-head h4 { font-size:17px; font-weight:700; color:var(--primary); line-height:1.3; }
+    .partner-node-list { list-style:none; display:grid; gap:8px 20px; padding-left:8px; }
+    .partner-node-list.cols-2 { grid-template-columns:1fr 1fr; }
+    .partner-node-list li { font-size:13px; color:var(--text-muted); padding-left:14px; position:relative; line-height:1.5; }
+    .partner-node-list li::before { content:""; position:absolute; left:0; top:8px; width:5px; height:5px; border-radius:50%; background:currentColor; opacity:.55; }
+    .partner-node-blue::before { background:#2563EB; }
+    .partner-node-blue .partner-node-icon { background:rgba(37,99,235,.1); color:#2563EB; }
+    .partner-node-blue .partner-node-list li { color:#334155; }
+    .partner-node-blue .partner-node-list li::before { color:#2563EB; }
+    .partner-node-green::before { background:#059669; }
+    .partner-node-green .partner-node-icon { background:rgba(5,150,105,.1); color:#059669; }
+    .partner-node-green .partner-node-list li::before { color:#059669; }
+    .partner-node-orange::before { background:#EA580C; }
+    .partner-node-orange .partner-node-icon { background:rgba(234,88,12,.1); color:#EA580C; }
+    .partner-node-orange .partner-node-list li::before { color:#EA580C; }
+    .partner-dot { position:absolute; width:10px; height:10px; border-radius:50%; border:2px solid var(--white); box-shadow:0 0 0 2px currentColor; z-index:2; pointer-events:none; }
+    .partner-dot-blue { color:#2563EB; top:118px; left:50%; transform:translateX(-50%); }
+    .partner-dot-green { color:#059669; bottom:168px; left:calc(50% - 168px); }
+    .partner-dot-orange { color:#EA580C; bottom:168px; right:calc(50% - 168px); }
+    .equip-group { margin-bottom:56px; }
+    .equip-group:last-child { margin-bottom:0; }
+    .equip-group-head { display:flex; align-items:flex-end; justify-content:space-between; gap:16px; margin-bottom:24px; padding-bottom:16px; border-bottom:3px solid var(--primary); }
+    .equip-group-head h3 { font-size:22px; font-weight:700; color:var(--primary); line-height:1.3; }
+    .equip-group-count { font-size:14px; color:var(--text-muted); white-space:nowrap; }
+    .equip-group-count strong { color:var(--accent); font-size:20px; font-weight:700; margin-right:4px; }
+    .equip-cards { display:grid; grid-template-columns:repeat(12,1fr); gap:24px; }
+    .equip-cards:not(:has(.equip-card:nth-child(4))) { grid-template-columns:repeat(3,1fr); }
+    .equip-card { grid-column:span 3; }
+    .equip-cards:not(:has(.equip-card:nth-child(4))) .equip-card { grid-column:auto; }
+    .equip-card:nth-child(4n+1):nth-last-child(3) { grid-column:2 / span 3; }
+    .equip-card:nth-child(4n+2):nth-last-child(2) { grid-column:5 / span 3; }
+    .equip-card:nth-child(4n+3):nth-last-child(1) { grid-column:8 / span 3; }
+    .equip-card { background:var(--white); border-radius:14px; overflow:hidden; box-shadow:var(--shadow); border:1px solid rgba(11,45,91,.06); transition:transform .2s, box-shadow .2s; }
+    .equip-card:hover { transform:translateY(-4px); box-shadow:0 12px 32px rgba(11,45,91,.12); }
+    .equip-card-media { position:relative; height:240px; overflow:hidden; background:#eef2f7; border-bottom:1px solid rgba(11,45,91,.06); }
+    .equip-card-media img { position:absolute; top:50%; left:50%; width:100%; height:100%; object-fit:cover; transform:translate(-50%,-50%) rotate(90deg) scale(1.42); transform-origin:center center; }
+    .equip-card-num { position:absolute; top:12px; left:12px; z-index:2; min-width:28px; height:28px; padding:0 8px; background:var(--primary); color:var(--white); border-radius:14px; font-size:12px; font-weight:700; display:flex; align-items:center; justify-content:center; box-shadow:0 2px 8px rgba(11,45,91,.2); }
+    .equip-card-body { padding:16px 18px 18px; }
+    .equip-card-body h4 { font-size:15px; font-weight:600; color:var(--primary); line-height:1.55; }
+    .equip-group-analysis .equip-group-head { border-bottom-color:#2563EB; }
+    .equip-group-analysis .equip-card-num { background:#2563EB; }
+    .equip-group-tribology .equip-group-head { border-bottom-color:#059669; }
+    .equip-group-tribology .equip-card-num { background:#059669; }
+    .h-timeline-wrap { position:relative; display:flex; align-items:center; gap:12px; margin:0 -8px; }
+    .h-timeline-btn { flex-shrink:0; width:44px; height:44px; border-radius:50%; border:1px solid var(--border); background:var(--white); color:var(--primary); font-size:22px; line-height:1; cursor:pointer; box-shadow:var(--shadow); transition:background .2s, color .2s, opacity .2s; font-family:inherit; display:flex; align-items:center; justify-content:center; padding:0 0 2px; }
+    .h-timeline-btn:hover:not(:disabled) { background:var(--primary); color:var(--white); border-color:var(--primary); }
+    .h-timeline-btn:disabled { opacity:.35; cursor:not-allowed; box-shadow:none; }
+    .h-timeline-scroll { flex:1; min-width:0; overflow-x:auto; overflow-y:hidden; padding:8px 0 16px; -webkit-overflow-scrolling:touch; scrollbar-width:none; -ms-overflow-style:none; }
+    .h-timeline-scroll::-webkit-scrollbar { display:none; }
+    .h-timeline-inner { position:relative; display:inline-flex; min-width:100%; padding:0 24px 16px; }
+    .h-timeline-axis { position:absolute; left:24px; right:24px; top:240px; height:4px; background:linear-gradient(90deg,var(--accent),var(--primary)); border-radius:2px; z-index:0; pointer-events:none; }
+    .h-timeline-items { display:flex; position:relative; z-index:1; }
+    .h-timeline-item { flex:0 0 252px; height:480px; position:relative; }
+    .h-timeline-dot { position:absolute; top:240px; left:50%; transform:translate(-50%,-50%); width:18px; height:18px; background:var(--accent); border:4px solid var(--white); border-radius:50%; box-shadow:0 0 0 3px rgba(197,160,54,.35), var(--shadow); z-index:2; }
+    .h-timeline-dot::before { content:""; position:absolute; left:50%; transform:translateX(-50%); width:2px; background:var(--accent); opacity:.45; }
+    .h-timeline-item.is-top .h-timeline-dot::before { bottom:100%; height:20px; margin-bottom:2px; }
+    .h-timeline-item.is-bottom .h-timeline-dot::before { top:100%; height:20px; margin-top:2px; }
+    .h-timeline-year { position:absolute; left:50%; transform:translateX(-50%); font-size:14px; font-weight:700; color:var(--primary); white-space:nowrap; text-align:center; }
+    .h-timeline-item.is-top .h-timeline-year { top:calc(240px + 22px); }
+    .h-timeline-item.is-bottom .h-timeline-year { bottom:calc(480px - 240px + 22px); }
+    .h-timeline-bubble { position:absolute; left:50%; transform:translateX(-50%); width:228px; background:var(--white); border-radius:14px; padding:16px 18px; box-shadow:var(--shadow); border:1px solid rgba(11,45,91,.08); }
+    .h-timeline-bubble::after { content:""; position:absolute; left:50%; transform:translateX(-50%); border-left:8px solid transparent; border-right:8px solid transparent; }
+    .h-timeline-item.is-top .h-timeline-bubble { bottom:calc(480px - 240px + 36px); }
+    .h-timeline-item.is-top .h-timeline-bubble::after { bottom:-8px; border-top:8px solid var(--white); }
+    .h-timeline-item.is-bottom .h-timeline-bubble { top:calc(240px + 36px); }
+    .h-timeline-item.is-bottom .h-timeline-bubble::after { top:-8px; border-bottom:8px solid var(--white); }
+    .h-timeline-bubble-title { font-size:15px; font-weight:700; color:var(--primary); margin-bottom:10px; padding-bottom:8px; border-bottom:2px solid rgba(197,160,54,.35); }
+    .h-timeline-list { list-style:none; max-height:160px; overflow-y:auto; }
+    .h-timeline-list::-webkit-scrollbar { width:3px; }
+    .h-timeline-list::-webkit-scrollbar-thumb { background:var(--border); border-radius:2px; }
+    .h-timeline-list li { font-size:12px; color:var(--text-muted); padding:5px 0 5px 12px; position:relative; line-height:1.6; }
+    .h-timeline-list li::before { content:""; position:absolute; left:0; top:11px; width:4px; height:4px; background:var(--accent); border-radius:50%; }
+    .era-badge { display:inline-block; background:rgba(197,160,54,.15); color:var(--accent); font-size:10px; padding:1px 6px; border-radius:8px; font-weight:600; margin-left:2px; white-space:nowrap; }
+    .footer { background:linear-gradient(180deg,#0c2f5c 0%,#071E3D 100%); color:rgba(255,255,255,.78); padding:56px 24px 28px; }
+    .footer-inner { max-width:1280px; margin:0 auto; display:grid; grid-template-columns:minmax(280px,340px) 1fr; gap:48px 56px; align-items:start; }
+    .footer-brand-head { display:flex; align-items:center; gap:14px; margin-bottom:20px; }
+    .footer-brand-head:hover { opacity:.92; }
+    .footer-brand-logo { height:52px; width:auto; object-fit:contain; display:block; flex-shrink:0; }
+    .footer-brand-cn { font-size:18px; font-weight:700; color:var(--white); line-height:1.35; margin-bottom:4px; }
+    .footer-brand-en { font-size:10px; color:rgba(255,255,255,.55); line-height:1.4; letter-spacing:.02em; }
+    .footer-brand-list { list-style:none; display:flex; flex-direction:column; gap:12px; }
+    .footer-brand-list li { display:flex; align-items:flex-start; gap:10px; font-size:13px; line-height:1.65; color:rgba(255,255,255,.82); }
+    .footer-brand-icon { width:18px; flex-shrink:0; text-align:center; opacity:.85; margin-top:2px; }
+    .footer-brand-list .footer-brand-divider { border-top:1px solid rgba(255,255,255,.12); padding-top:16px; margin-top:4px; }
+    .footer-brand-list strong { color:var(--white); font-weight:600; }
+    .footer-brand-list a { color:var(--accent-light); }
+    .footer-nav { display:grid; grid-template-columns:repeat(6,1fr); gap:16px 20px; }
+    .footer-col h4 { color:var(--white); font-size:15px; font-weight:600; margin-bottom:14px; padding-bottom:14px; border-bottom:1px solid rgba(255,255,255,.35); letter-spacing:.02em; }
+    .footer-col ul { list-style:none; }
+    .footer-col ul li { margin-bottom:10px; }
+    .footer-col ul li:last-child { margin-bottom:0; }
+    .footer-col ul a { font-size:12px; line-height:1.55; color:rgba(255,255,255,.72); transition:color .2s; display:inline-block; }
+    .footer-col ul a:hover { color:var(--accent-light); }
+    .footer-bottom { max-width:1280px; margin:36px auto 0; padding-top:24px; border-top:1px solid rgba(255,255,255,.12); text-align:center; font-size:12px; color:rgba(255,255,255,.45); }
+    .prototype-badge { position:fixed; bottom:16px; right:16px; background:var(--accent); color:var(--primary); padding:6px 14px; border-radius:20px; font-size:11px; font-weight:700; z-index:9999; }
+    @media (max-width:1100px) { .footer-nav { grid-template-columns:repeat(3,1fr); }
+      .equip-cards { grid-template-columns:repeat(2,1fr); }
+      .equip-cards:not(:has(.equip-card:nth-child(4))) { grid-template-columns:repeat(2,1fr); }
+      .equip-card, .equip-card:nth-child(4n+1):nth-last-child(3), .equip-card:nth-child(4n+2):nth-last-child(2), .equip-card:nth-child(4n+3):nth-last-child(1) { grid-column:auto; }
+      .partner-chain-visual { min-height:620px; max-width:760px; }
+      .partner-node { width:260px; }
+      .partner-node-top { width:min(380px, calc(100% - 24px)); }
+      .partner-dot-green { left:calc(50% - 130px); }
+      .partner-dot-orange { right:calc(50% - 130px); }
+    }
+    @media (max-width:768px) {
+      .nav { display:none; }
+      [id] { scroll-margin-top:80px; }
+      .page-hero h1 { font-size:28px; }
+      .intro-banner { margin:0 16px; padding:28px 24px; }
+      .pillars, .equip-cards, .equip-cards:not(:has(.equip-card:nth-child(4))) { grid-template-columns:1fr; }
+      .equip-card, .equip-card:nth-child(4n+1):nth-last-child(3), .equip-card:nth-child(4n+2):nth-last-child(2), .equip-card:nth-child(4n+3):nth-last-child(1) { grid-column:auto; }
+      .equip-card-media { height:220px; }
+      .partner-chain-visual { min-height:auto; padding:0; display:flex; flex-direction:column; align-items:center; gap:20px; }
+      .partner-orbit, .partner-dot { display:none; }
+      .partner-node, .partner-node-top, .partner-node-left, .partner-node-right { position:relative; left:auto; right:auto; top:auto; bottom:auto; transform:none; width:100%; max-width:480px; }
+      .partner-core { position:relative; left:auto; bottom:auto; transform:none; order:-1; margin-bottom:8px; }
+      .partner-node-list.cols-2 { grid-template-columns:1fr; }
+      .h-timeline-item { flex:0 0 220px; height:440px; }
+      .h-timeline-bubble { width:200px; }
+      .h-timeline-axis { top:220px; }
+      .h-timeline-dot { top:220px; }
+      .h-timeline-item.is-top .h-timeline-year { top:calc(220px + 22px); }
+      .h-timeline-item.is-bottom .h-timeline-year { bottom:calc(440px - 220px + 22px); }
+      .h-timeline-item.is-top .h-timeline-bubble { bottom:calc(440px - 220px + 36px); }
+      .h-timeline-item.is-bottom .h-timeline-bubble { top:calc(220px + 36px); }
+      .h-timeline-btn { width:36px; height:36px; font-size:18px; }
+      .footer-inner { grid-template-columns:1fr; gap:36px; }
+      .footer-nav { grid-template-columns:repeat(2,1fr); }
+      .section { padding:56px 20px; }
+      .section-title { font-size:24px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="prototype-badge">原型 v1.0</div>
+  <header class="header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <img src="img/logo.png" alt="STARLITE" class="logo-img">
+        <div>
+          <div class="logo-text">星光树脂制品（昆山）有限公司</div>
+          <div class="logo-sub">Starlite Plastic Products（Kunshan）Co.,Ltd.</div>
+        </div>
+      </a>
+      <ul class="nav">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="innovation.html" class="active">创新中心</a></li>
+        <li><a href="products.html">产品核心</a></li>
+        <li><a href="about.html">关于我们</a></li>
+        <li><a href="join.html">加入我们</a></li>
+        <li><a href="contact.html">联系我们</a></li>
+      </ul>
+      <div class="lang-switch"><button class="lang-btn active" type="button">中文</button><button class="lang-btn" type="button">EN</button></div>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <h1>创新中心</h1>
+    <p>以摩擦学技术为核心，持续深耕材料领域，引领行业前沿发展</p>
+  </section>
+
+  <!-- 摩擦学技术开发轨迹 -->
+  <section class="section section-alt" id="timeline">
+    <div class="section-inner">
+      <div class="section-header">
+        <h2 class="section-title">星光集团摩擦学技术开发轨迹</h2>
+        <p class="section-desc">从1936年星光工业成立至今，近90年持续创新的完整技术发展历程</p>
+      </div>
+      <div class="h-timeline-wrap">
+        <button type="button" class="h-timeline-btn h-timeline-btn-prev" aria-label="上一段">‹</button>
+        <div class="h-timeline-scroll" id="hTimelineScroll">
+          <div class="h-timeline-inner">
+            <div class="h-timeline-axis"></div>
+            <div class="h-timeline-items">
+              <article class="h-timeline-item is-top">
+                <div class="h-timeline-bubble">
+                  <div class="h-timeline-bubble-title">1936年</div>
+                  <ul class="h-timeline-list"><li>星光工业株式会社成立</li></ul>
+                </div>
+                <div class="h-timeline-dot"></div>
+                <div class="h-timeline-year">1936年</div>
+              </article>
+              <article class="h-timeline-item is-bottom">
+                <div class="h-timeline-bubble">
+                  <div class="h-timeline-bubble-title">1940年代</div>
+                  <ul class="h-timeline-list"><li>钢铁轧机用酚醛层压树脂轴承的开发 <span class="era-badge">日本国内首创</span></li></ul>
+                </div>
+                <div class="h-timeline-dot"></div>
+                <div class="h-timeline-year">1940年代</div>
+              </article>
+              <article class="h-timeline-item is-top">
+                <div class="h-timeline-bubble">
+                  <div class="h-timeline-bubble-title">1950年代</div>
+                  <ul class="h-timeline-list">
+                    <li>船舶用尾舵轴承的开发 <span class="era-badge">日本国内首创</span></li>
+                    <li>制动片材料的开发</li>
+                    <li>钢铁轧机用刮水板、挡水板的开发 <span class="era-badge">日本国内首创</span></li>
+                    <li>造纸工业用刮刀片的开发</li>
+                  </ul>
+                </div>
+                <div class="h-timeline-dot"></div>
+                <div class="h-timeline-year">1950年代</div>
+              </article>
+              <article class="h-timeline-item is-bottom">
+                <div class="h-timeline-bubble">
+                  <div class="h-timeline-bubble-title">1960年代</div>
+                  <ul class="h-timeline-list">
+                    <li>大型压缩机用活塞环的开发 <span class="era-badge">日本国内首创</span></li>
+                    <li>食品机械用辊筒的开发</li>
+                  </ul>
+                </div>
+                <div class="h-timeline-dot"></div>
+                <div class="h-timeline-year">1960年代</div>
+              </article>
+              <article class="h-timeline-item is-top">
+                <div class="h-timeline-bubble">
+                  <div class="h-timeline-bubble-title">1970年代</div>
+                  <ul class="h-timeline-list">
+                    <li>汽车空调用活塞环的开发</li>
+                    <li>唇形密封件的开发</li>
+                  </ul>
+                </div>
+                <div class="h-timeline-dot"></div>
+                <div class="h-timeline-year">1970年代</div>
+              </article>
+              <article class="h-timeline-item is-bottom">
+                <div class="h-timeline-bubble">
+                  <div class="h-timeline-bubble-title">1980年代</div>
+                  <ul class="h-timeline-list">
+                    <li>汽车空调用密封件的开发</li>
+                    <li>船舶用树脂材质轴承盘的开发 <span class="era-badge">日本国内首创</span></li>
+                    <li>拉幅机用滑动衬垫的开发</li>
+                    <li>真空泵用叶片的开发</li>
+                    <li>桥梁用滑动板、铁路车辆用滑动板的开发</li>
+                    <li>办公设备用定影剥离爪、定影滑动轴承的开发 <span class="era-badge">行业首创</span></li>
+                    <li>耐热齿轮的开发</li>
+                  </ul>
+                </div>
+                <div class="h-timeline-dot"></div>
+                <div class="h-timeline-year">1980年代</div>
+              </article>
+              <article class="h-timeline-item is-top">
+                <div class="h-timeline-bubble">
+                  <div class="h-timeline-bubble-title">1990年代</div>
+                  <ul class="h-timeline-list">
+                    <li>办公设备用熔融氟树脂材质定影辊的开发</li>
+                    <li>汽车空调用电磁离合器摩擦衬片的开发</li>
+                    <li>办公设备用碳粉密封件的开发 <span class="era-badge">世界首创</span></li>
+                  </ul>
+                </div>
+                <div class="h-timeline-dot"></div>
+                <div class="h-timeline-year">1990年代</div>
+              </article>
+              <article class="h-timeline-item is-bottom">
+                <div class="h-timeline-bubble">
+                  <div class="h-timeline-bubble-title">2000年代</div>
+                  <ul class="h-timeline-list">
+                    <li>氢气压缩机密封环开发 <span class="era-badge">日本国内首创</span></li>
+                    <li>汽车差速器驱动用热固性树脂制推力轴承开发</li>
+                    <li>办公设备用熔融氟树脂材质定影剥离爪的开发 <span class="era-badge">世界首创</span></li>
+                    <li>船舶稳定器用轴承开发</li>
+                    <li>食品机械用长尺寸辊筒的开发 <span class="era-badge">业界首创</span></li>
+                  </ul>
+                </div>
+                <div class="h-timeline-dot"></div>
+                <div class="h-timeline-year">2000年代</div>
+              </article>
+              <article class="h-timeline-item is-top">
+                <div class="h-timeline-bubble">
+                  <div class="h-timeline-bubble-title">2010年代</div>
+                  <ul class="h-timeline-list">
+                    <li>纺车轮用PTFE材质刹车垫片的开发 <span class="era-badge">国内首创</span></li>
+                    <li>电子锁的薄型减速单元开发 <span class="era-badge">业界首创</span></li>
+                    <li>滚筒驱动的行星式精密减速单元开发 <span class="era-badge">业界首创</span></li>
+                    <li>建筑用隔震/制震/耐震部件开发</li>
+                    <li>特殊涂层材料的开发</li>
+                  </ul>
+                </div>
+                <div class="h-timeline-dot"></div>
+                <div class="h-timeline-year">2010年代</div>
+              </article>
+              <article class="h-timeline-item is-bottom">
+                <div class="h-timeline-bubble">
+                  <div class="h-timeline-bubble-title">2020年代</div>
+                  <ul class="h-timeline-list">
+                    <li>树脂材质静压气体轴承的开发</li>
+                    <li>低溶胀水中轴承材料、低膨胀 PTFE 材料的开发</li>
+                    <li>高压氢气压缩机密封环的开发</li>
+                    <li>协作机器人的树脂减速机的开发</li>
+                    <li>机器人用无励磁制动器的射出成型摩擦材料的开发</li>
+                    <li>非食用生物质基摩擦材料的开发</li>
+                  </ul>
+                </div>
+                <div class="h-timeline-dot"></div>
+                <div class="h-timeline-year">2020年代</div>
+              </article>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="h-timeline-btn h-timeline-btn-next" aria-label="下一段">›</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 摩擦学技术理念 -->
+  <section class="section" id="tribology">
+    <div class="section-inner">
+      <div class="section-header">
+        <h2 class="section-title">STARLITE 摩擦学技术理念</h2>
+        <p class="section-desc">STARLITE 始终以摩擦学为核心，在材料领域持续深耕。我们不局限于单一塑料材质，而是通过多元材料复合的「造物」理念，与兼顾可持续发展的「成事」理念，不断升级以「滑动、制动、防护、密封」为核心的技术与服务，为客户创造更环保、更高效、更安全的解决方案。</p>
+      </div>
+      <div class="pillars">
+        <div class="pillar">
+          <div class="pillar-icon">🌿</div>
+          <h4>生态环保</h4>
+          <ul>
+            <li>实现无油润滑技术，降低对传统润滑油的依赖</li>
+            <li>优化材料性能，助力设备实现低能耗、低油耗运行</li>
+            <li>推进全生命周期的废弃物减量与回收再利用</li>
+            <li>产品符合欧盟 RoHS 2、ELV 等环保指令要求</li>
+            <li>兼顾使用便利性</li>
+            <li>积极采用生物质环保材料</li>
+          </ul>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">✨</div>
+          <h4>性能体验</h4>
+          <ul>
+            <li>低噪音设计，降低设备运行过程中的噪音污染</li>
+            <li>稳定维持低摩擦力，保障设备运行顺畅</li>
+            <li>提供可靠、稳定的制动力，确保运行过程可控</li>
+          </ul>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">🔧</div>
+          <h4>高效运维</h4>
+          <ul>
+            <li>提升材料耐用性，延长设备整体使用寿命</li>
+            <li>通过材料优化减少零部件数量，简化结构</li>
+            <li>降低维护频率，大幅提升作业效率</li>
+          </ul>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">🛡️</div>
+          <h4>安全可靠</h4>
+          <ul>
+            <li>产品符合食品卫生法规要求</li>
+            <li>实现材料轻量化、小型化，助力设备整体减重</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 技术开发型商务伙伴 -->
+  <section class="section section-alt" id="partner">
+    <div class="section-inner">
+      <div class="section-header">
+        <h2 class="section-title">技术开发型商务伙伴</h2>
+        <p class="section-desc">基于摩擦学技术，我们提供材料开发到成型加工工艺，以及运用摩擦学实验设备进行材料分析和产品的设计与评估全链条解决方案。STARLITE 拥有大量深耕塑料与摩擦学领域的技术、研发人员，始终致力于响应广大客户的多样化需求，以技术开发型商业合作伙伴的身份引领行业前沿发展。</p>
+      </div>
+      <div class="partner-chain-visual">
+        <svg class="partner-orbit" viewBox="0 0 980 540" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+          <ellipse cx="490" cy="300" rx="320" ry="200" class="orbit-ring"/>
+          <path class="orbit-link" d="M490 168 Q490 240 490 392" stroke="#2563EB"/>
+          <path class="orbit-link" d="M490 392 Q340 340 170 420" stroke="#059669"/>
+          <path class="orbit-link" d="M490 392 Q640 340 810 420" stroke="#EA580C"/>
+        </svg>
+        <span class="partner-dot partner-dot-blue" aria-hidden="true"></span>
+        <span class="partner-dot partner-dot-green" aria-hidden="true"></span>
+        <span class="partner-dot partner-dot-orange" aria-hidden="true"></span>
+
+        <article class="partner-node partner-node-top partner-node-blue">
+          <div class="partner-node-head">
+            <div class="partner-node-icon" aria-hidden="true">▣</div>
+            <h4>材料设计</h4>
+          </div>
+          <ul class="partner-node-list cols-2">
+            <li>材料选定</li>
+            <li>配方设计</li>
+            <li>分散技术</li>
+            <li>纳米技术</li>
+            <li>分子结构控制技术</li>
+          </ul>
+        </article>
+
+        <div class="partner-core">
+          <div class="partner-core-icon" aria-hidden="true">⚙</div>
+          <strong>摩擦学技术</strong>
+          <span>核心驱动</span>
+        </div>
+
+        <article class="partner-node partner-node-left partner-node-green">
+          <div class="partner-node-head">
+            <div class="partner-node-icon" aria-hidden="true">⬡</div>
+            <h4>成型加工</h4>
+          </div>
+          <ul class="partner-node-list">
+            <li>模具技术</li>
+            <li>成型技术</li>
+            <li>复合成型技术</li>
+            <li>二次加工技术</li>
+          </ul>
+        </article>
+
+        <article class="partner-node partner-node-right partner-node-orange">
+          <div class="partner-node-head">
+            <div class="partner-node-icon" aria-hidden="true">☑</div>
+            <h4>评估与设计技术</h4>
+          </div>
+          <ul class="partner-node-list">
+            <li>产品开发设计</li>
+            <li>模块化技术</li>
+            <li>材料评估与分析</li>
+            <li>摩擦学性能评估</li>
+            <li>CAE 分析</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 试验分析仪器 & 检测设备 -->
+  <section class="section" id="equipment">
+    <div class="section-inner">
+      <div class="section-header">
+        <h2 class="section-title">试验分析仪器 & 摩擦学检测设备</h2>
+        <p class="section-desc">星光依托各类摩擦学检测设备及材料分析仪器，开展塑料滑动材料的研发工作。</p>
+      </div>
+
+      <div class="equip-group equip-group-analysis">
+        <div class="equip-group-head">
+          <h3>试验分析仪器</h3>
+          <div class="equip-group-count"><strong>7</strong>台</div>
+        </div>
+        <div class="equip-cards">
+          <article class="equip-card">
+            <div class="equip-card-media"><span class="equip-card-num">1</span><img src="img/equipment/analysis-01.png" alt="精密万能试验机"></div>
+            <div class="equip-card-body"><h4>精密万能试验机</h4></div>
+          </article>
+          <article class="equip-card">
+            <div class="equip-card-media"><span class="equip-card-num">2</span><img src="img/equipment/analysis-02.jpeg" alt="扫描电子显微镜"></div>
+            <div class="equip-card-body"><h4>扫描电子显微镜</h4></div>
+          </article>
+          <article class="equip-card">
+            <div class="equip-card-media"><span class="equip-card-num">3</span><img src="img/equipment/analysis-03.jpeg" alt="能量色散型 X 射线荧光分析仪"></div>
+            <div class="equip-card-body"><h4>能量色散型 X 射线荧光分析仪</h4></div>
+          </article>
+          <article class="equip-card">
+            <div class="equip-card-media"><span class="equip-card-num">4</span><img src="img/equipment/analysis-04.jpeg" alt="傅里叶变换红外分光光度计"></div>
+            <div class="equip-card-body"><h4>傅里叶变换红外分光光度计</h4></div>
+          </article>
+          <article class="equip-card">
+            <div class="equip-card-media"><span class="equip-card-num">5</span><img src="img/equipment/analysis-05.jpeg" alt="冷热冲击试验仪"></div>
+            <div class="equip-card-body"><h4>冷热冲击试验仪</h4></div>
+          </article>
+          <article class="equip-card">
+            <div class="equip-card-media"><span class="equip-card-num">6</span><img src="img/equipment/analysis-06.jpeg" alt="动态粘弹性测试仪"></div>
+            <div class="equip-card-body"><h4>动态粘弹性测试仪</h4></div>
+          </article>
+          <article class="equip-card">
+            <div class="equip-card-media"><span class="equip-card-num">7</span><img src="img/equipment/analysis-07.jpeg" alt="热分析装置"></div>
+            <div class="equip-card-body"><h4>热分析装置</h4></div>
+          </article>
+        </div>
+      </div>
+
+      <div class="equip-group equip-group-tribology">
+        <div class="equip-group-head">
+          <h3>摩擦学检测设备</h3>
+          <div class="equip-group-count"><strong>8</strong>台</div>
+        </div>
+        <div class="equip-cards">
+          <article class="equip-card">
+            <div class="equip-card-media"><span class="equip-card-num">1</span><img src="img/equipment/tribology-01.png" alt="往复摆动式摩擦磨损试验机"></div>
+            <div class="equip-card-body"><h4>往复摆动式摩擦磨损试验机</h4></div>
+          </article>
+          <article class="equip-card">
+            <div class="equip-card-media"><span class="equip-card-num">2</span><img src="img/equipment/tribology-02.jpeg" alt="表面粗糙度轮廓测量仪"></div>
+            <div class="equip-card-body"><h4>表面粗糙度轮廓测量仪</h4></div>
+          </article>
+          <article class="equip-card">
+            <div class="equip-card-media"><span class="equip-card-num">3</span><img src="img/equipment/tribology-03.jpeg" alt="环盘式摩擦磨损试验机"></div>
+            <div class="equip-card-body"><h4>环盘式摩擦磨损试验机</h4></div>
+          </article>
+          <article class="equip-card">
+            <div class="equip-card-media"><span class="equip-card-num">4</span><img src="img/equipment/tribology-04.jpeg" alt="定速式摩擦磨损试验机"></div>
+            <div class="equip-card-body"><h4>定速式摩擦磨损试验机</h4></div>
+          </article>
+          <article class="equip-card">
+            <div class="equip-card-media"><span class="equip-card-num">5</span><img src="img/equipment/tribology-05.jpeg" alt="销盘式摩擦磨损试验机"></div>
+            <div class="equip-card-body"><h4>销盘式摩擦磨损试验机</h4></div>
+          </article>
+          <article class="equip-card">
+            <div class="equip-card-media"><span class="equip-card-num">6</span><img src="img/equipment/tribology-06.jpeg" alt="齿轮试验机"></div>
+            <div class="equip-card-body"><h4>齿轮试验机</h4></div>
+          </article>
+          <article class="equip-card">
+            <div class="equip-card-media"><span class="equip-card-num">7</span><img src="img/equipment/tribology-07.jpeg" alt="轴套型摩擦磨损试验机"></div>
+            <div class="equip-card-body"><h4>轴套型摩擦磨损试验机</h4></div>
+          </article>
+          <article class="equip-card">
+            <div class="equip-card-media"><span class="equip-card-num">8</span><img src="img/equipment/tribology-08.jpeg" alt="块环式摩擦磨损试验机"></div>
+            <div class="equip-card-body"><h4>块环式摩擦磨损试验机</h4></div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-brand-head">
+          <img src="img/logo.png" alt="STARLITE" class="footer-brand-logo">
+          <div>
+            <div class="footer-brand-cn">星光树脂</div>
+            <div class="footer-brand-en">Starlite Plastic Products</div>
+          </div>
+        </a>
+        <ul class="footer-brand-list">
+          <li><span class="footer-brand-icon">📞</span><span><br>+86-512-57641220 · 传真 +86-512-57641211</span></li>
+          <li><span class="footer-brand-icon">📍</span><span>江苏省昆山市周市镇陆杨迎宾西路2号 · 邮编 215313</span></li>
+          <li class="footer-brand-divider"><span class="footer-brand-icon">📞</span><span><strong>星光工业株式会社</strong><br>+816-6956-2240 · <a href="https://starlite.co.jp/" target="_blank" rel="noopener">starlite.co.jp</a></span></li>
+          <li><span class="footer-brand-icon">📍</span><span>日本国大阪府大阪市旭区大宫4丁目23番7号 · 邮编 535-0002</span></li>
+        </ul>
+      </div>
+      <div class="footer-nav">
+        <div class="footer-col">
+          <h4>首页</h4>
+          <ul>
+            <li><a href="index.html#intro">企业简介</a></li>
+            <li><a href="index.html#history">发展历程</a></li>
+            <li><a href="index.html#logo">品牌标识解说</a></li>
+            <li><a href="index.html#vision">理念&愿景&使命</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>创新中心</h4>
+          <ul>
+            <li><a href="innovation.html#timeline">摩擦学技术开发轨迹</a></li>
+            <li><a href="innovation.html#tribology">STARLITE 摩擦学技术理念</a></li>
+            <li><a href="innovation.html#partner">技术开发型商务伙伴</a></li>
+            <li><a href="innovation.html#equipment">试验分析仪器&检测设备</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>产品核心</h4>
+          <ul>
+            <li><a href="products.html#bakes">热固性树脂（BAKES®）性能</a></li>
+            <li><a href="products.html#alp">热固性树脂（ALP®）性能</a></li>
+            <li><a href="products.html#sbear">热塑性树脂（S-BEAR®）性能</a></li>
+            <li><a href="products.html#biomass">非食用生物质摩擦材料</a></li>
+            <li><a href="products.html#other">暑热灾害对策用产品及其他事业</a></li>
+            <li><a href="products.html#clients">合作客户</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>关于我们</h4>
+          <ul>
+            <li><a href="about.html#honors">企业荣誉</a></li>
+            <li><a href="about.html#cert">认证资质</a></li>
+            <li><a href="about.html#sustain">可持续发展</a></li>
+            <li><a href="about.html#news">企业动态</a></li>
+            <li><a href="about.html#social">社会贡献</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>加入我们</h4>
+          <ul>
+            <li><a href="join.html#welfare">人文关怀</a></li>
+            <li><a href="join.html#training">教育培训</a></li>
+            <li><a href="join.html#activities">员工活动</a></li>
+            <li><a href="join.html#careers">招贤纳士</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>联系我们</h4>
+          <ul>
+            <li><a href="contact.html#info">联系方式</a></li>
+            <li><a href="contact.html#map">电子地图</a></li>
+            <li><a href="contact.html#message">客户留言</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 星光树脂制品（昆山）有限公司 · 网站原型</div>
+  </footer>
+<script>
+document.querySelectorAll('.lang-switch').forEach(function(s){s.querySelectorAll('.lang-btn').forEach(function(b){b.addEventListener('click',function(){s.querySelectorAll('.lang-btn').forEach(function(x){x.classList.remove('active')});b.classList.add('active')})})});
+
+(function(){
+  var scroll = document.getElementById('hTimelineScroll');
+  var prev = document.querySelector('.h-timeline-btn-prev');
+  var next = document.querySelector('.h-timeline-btn-next');
+  if (!scroll || !prev || !next) return;
+  var step = 280;
+  function updateBtns(){
+    prev.disabled = scroll.scrollLeft <= 4;
+    next.disabled = scroll.scrollLeft >= scroll.scrollWidth - scroll.clientWidth - 4;
+  }
+  prev.addEventListener('click', function(){ scroll.scrollBy({ left: -step, behavior: 'smooth' }); });
+  next.addEventListener('click', function(){ scroll.scrollBy({ left: step, behavior: 'smooth' }); });
+  scroll.addEventListener('scroll', updateBtns, { passive: true });
+  window.addEventListener('resize', updateBtns);
+  updateBtns();
+})();
+</script>
+</body>
+</html>

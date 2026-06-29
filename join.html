@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>加入我们 - 星光树脂制品（昆山）有限公司</title>
+  <style>
+    :root{--primary:#0B2D5B;--primary-light:#1A4A8A;--accent:#C5A036;--accent-light:#E8C547;--text:#1A1A2E;--text-muted:#5A6270;--bg:#F5F7FA;--white:#FFF;--shadow:0 4px 24px rgba(11,45,91,0.08);--radius:8px}
+    *{margin:0;padding:0;box-sizing:border-box}body{font-family:"PingFang SC","Microsoft YaHei",sans-serif;color:var(--text);background:var(--bg);line-height:1.7}
+    a{text-decoration:none;color:inherit}.header{background:var(--white);box-shadow:0 2px 12px rgba(0,0,0,.06);position:sticky;top:0;z-index:1000}
+    .header-inner{max-width:1280px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:72px}
+    .logo{display:flex;align-items:center;gap:12px}.logo-img{height:48px;width:auto;object-fit:contain;display:block}
+    .logo-text{font-size:15px;line-height:1.3;font-weight:700;color:var(--primary)}.logo-sub{font-size:10px;line-height:1.3;color:var(--text-muted)}
+    .nav{display:flex;gap:4px}.nav>li{list-style:none}.nav>li>a{display:block;padding:10px 16px;font-size:14px;border-radius:var(--radius)}.nav>li>a:hover,.nav>li>a.active{background:var(--primary);color:var(--white)}
+    .page-hero{background:linear-gradient(135deg,var(--primary),var(--primary-light));padding:64px 24px;color:var(--white);text-align:center}.page-hero h1{font-size:36px;margin-bottom:8px}
+    .section{padding:64px 24px}.section-inner{max-width:1280px;margin:0 auto}
+    .join-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:32px}
+    .join-card{background:var(--white);border-radius:16px;overflow:hidden;box-shadow:var(--shadow)}
+    .join-card-img{height:200px;background:#000;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.5);font-size:14px;flex-direction:column;gap:8px}
+    .join-video{width:100%;height:auto;display:block;background:#000;vertical-align:top}
+    .join-card-body{padding:28px}.join-card-body h3{font-size:20px;color:var(--primary);margin-bottom:12px}.join-card-body p{font-size:14px;color:var(--text-muted)}
+    /* 人文关怀 */
+    .welfare-section{margin-bottom:48px}
+    .welfare-section .section-heading{font-size:28px;color:var(--primary);text-align:center;margin-bottom:12px}
+    .welfare-section .section-desc{font-size:14px;color:var(--text-muted);text-align:center;margin-bottom:32px;max-width:760px;margin-left:auto;margin-right:auto;line-height:1.8}
+    .welfare-wrap{background:var(--white);border-radius:16px;padding:32px;box-shadow:var(--shadow)}
+    .welfare-vcr{margin-bottom:32px}
+    .welfare-vcr-placeholder{width:100%;min-height:280px;background:var(--bg);border:2px dashed #D0D7E2;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;color:var(--text-muted);font-size:14px;text-align:center;padding:24px}
+    .welfare-vcr-placeholder .vcr-icon{font-size:40px;opacity:.5;line-height:1}
+    .welfare-photos{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .welfare-gallery{display:flex;flex-direction:column;gap:32px}
+    .welfare-photo-group .welfare-group-title{font-size:16px;color:var(--primary);font-weight:600;margin-bottom:16px;padding-left:12px;border-left:4px solid var(--accent)}
+    .welfare-photo{background:var(--bg);border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(11,45,91,0.06);transition:transform .3s,box-shadow .3s}
+    .welfare-photo:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(11,45,91,0.12)}
+    .welfare-photo img{width:100%;height:200px;object-fit:cover;display:block}
+    .welfare-photo figcaption{padding:12px 14px;font-size:13px;color:var(--text-muted);background:var(--white);line-height:1.5}
+    .welfare-photo figcaption strong{display:block;color:var(--primary);font-size:14px;margin-bottom:4px}
+    @media(max-width:991px){.welfare-photos{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:768px){.welfare-wrap{padding:20px 16px}.welfare-photos{grid-template-columns:1fr}.welfare-photo img{height:220px}.welfare-vcr-placeholder{min-height:200px}}
+    .careers-banner{background:var(--primary);color:var(--white);border-radius:16px;padding:48px;text-align:center;margin-top:48px}
+    .careers-banner h3{font-size:28px;margin-bottom:12px}.careers-banner p{opacity:.85;margin-bottom:8px;font-size:15px}
+    /* 招贤纳士 */
+    .careers-section{margin-top:48px}
+    .careers-section .section-heading{font-size:28px;color:var(--primary);text-align:center;margin-bottom:12px}
+    .careers-section .section-desc{font-size:14px;color:var(--text-muted);text-align:center;margin-bottom:32px;max-width:760px;margin-left:auto;margin-right:auto;line-height:1.8}
+    .careers-wrap{background:var(--white);border-radius:16px;overflow:hidden;box-shadow:var(--shadow)}
+    .careers-hero{background:linear-gradient(135deg,var(--primary),var(--primary-light));color:var(--white);padding:48px 32px;text-align:center}
+    .careers-hero h3{font-size:26px;margin-bottom:16px}
+    .careers-hero .hero-desc{opacity:.88;font-size:15px;line-height:1.8;max-width:680px;margin:0 auto 28px}
+    .careers-hero .hero-motto{opacity:.75;font-size:14px;margin-bottom:28px;font-style:italic}
+    .careers-contact{font-size:14px;opacity:.85;margin-top:24px;line-height:1.8}
+    .careers-contact a{color:var(--accent-light);text-decoration:underline}
+    .careers-links{display:flex;justify-content:center;gap:16px;flex-wrap:wrap}
+    .btn-outline{display:inline-block;padding:14px 36px;border:2px solid var(--white);color:var(--white);border-radius:var(--radius);font-weight:600;font-size:15px;transition:all .2s}
+    .btn-outline:hover{background:var(--white);color:var(--primary)}
+    @media(max-width:768px){.careers-hero{padding:36px 20px}}
+    .btn{display:inline-block;padding:14px 36px;background:var(--accent);color:var(--primary);border-radius:var(--radius);font-weight:600;font-size:15px;margin-top:20px}
+    .footer { background: linear-gradient(180deg, #0c2f5c 0%, #071E3D 100%); color: rgba(255,255,255,0.78); padding: 56px 24px 28px; }
+    .footer-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: minmax(280px, 340px) 1fr; gap: 48px 56px; align-items: start; }
+    .footer-brand-head { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
+    .footer-brand-head:hover { opacity: 0.92; }
+    .footer-brand-logo { height: 52px; width: auto; object-fit: contain; display: block; flex-shrink: 0; }
+    .footer-brand-cn { font-size: 18px; font-weight: 700; color: var(--white); line-height: 1.35; margin-bottom: 4px; }
+    .footer-brand-en { font-size: 10px; color: rgba(255,255,255,0.55); line-height: 1.4; letter-spacing: 0.02em; }
+    .footer-brand-desc { font-size: 13px; line-height: 1.85; color: rgba(255,255,255,0.72); margin-bottom: 24px; }
+    .footer-brand-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .footer-brand-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; line-height: 1.65; color: rgba(255,255,255,0.82); }
+    .footer-brand-icon { width: 18px; flex-shrink: 0; text-align: center; opacity: 0.85; margin-top: 2px; }
+    .footer-brand-list .footer-brand-divider { border-top: 1px solid rgba(255,255,255,0.12); padding-top: 16px; margin-top: 4px; }
+    .footer-brand-list strong { color: var(--white); font-weight: 600; }
+    .footer-brand-list a { color: var(--accent-light); }
+    .footer-nav { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px 20px; }
+    .footer-col h4 { color: var(--white); font-size: 15px; font-weight: 600; margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px solid rgba(255,255,255,0.35); letter-spacing: 0.02em; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 10px; }
+    .footer-col ul li:last-child { margin-bottom: 0; }
+    .footer-col ul a { font-size: 12px; line-height: 1.55; color: rgba(255,255,255,0.72); transition: color 0.2s; display: inline-block; }
+    .footer-col ul a:hover { color: var(--accent-light); }
+    .footer-bottom { max-width: 1280px; margin: 36px auto 0; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.12); text-align: center; font-size: 12px; color: rgba(255,255,255,0.45); }
+
+    
+    .prototype-badge{position:fixed;bottom:16px;right:16px;background:var(--accent);color:var(--primary);padding:6px 14px;border-radius:20px;font-size:11px;font-weight:700;z-index:9999}
+    @media(max-width:768px){.nav{display:none}.footer-inner{grid-template-columns:1fr;gap:36px}.footer-nav{grid-template-columns:repeat(2,1fr)}.join-grid{grid-template-columns:1fr}}
+  .lang-switch{display:flex;border:1px solid #E2E8F0;border-radius:20px;overflow:hidden;flex-shrink:0}.lang-btn{padding:6px 14px;font-size:13px;border:none;background:transparent;color:#5A6270;cursor:pointer;font-family:inherit;transition:all .2s}.lang-btn.active{background:#0B2D5B;color:#FFF}
+    @media (max-width: 1100px) { .footer-nav { grid-template-columns: repeat(3, 1fr); } }
+
+    /* 员工活动 */
+    .activities-section { background: var(--white); }
+    .activities-section .section-heading { font-size: 28px; color: var(--primary); text-align: center; margin-bottom: 12px; }
+    .activities-section .section-desc { font-size: 14px; color: var(--text-muted); text-align: center; margin-bottom: 40px; max-width: 720px; margin-left: auto; margin-right: auto; }
+    .activities-wrap { background: var(--bg); border-radius: 16px; padding: 40px; box-shadow: var(--shadow); }
+    .activities-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .activity-card { background: var(--white); border-radius: var(--radius); overflow: hidden; box-shadow: 0 2px 12px rgba(11,45,91,0.06); transition: all 0.3s ease; }
+    .activity-card:hover { box-shadow: 0 6px 20px rgba(11,45,91,0.12); transform: translateY(-2px); }
+    .activity-card .activity-image { width: 100%; height: 160px; background: var(--bg); position: relative; display: flex; align-items: center; justify-content: center; }
+    .activity-card .cross-line1, .activity-card .cross-line2 { position: absolute; width: 60%; height: 1px; background: #ccc; }
+    .activity-card .cross-line1 { transform: rotate(45deg); }
+    .activity-card .cross-line2 { transform: rotate(-45deg); }
+    .activity-card .activity-content { padding: 16px; }
+    .activity-card .activity-date { font-size: 12px; color: var(--text-muted); margin-bottom: 4px; }
+    .activity-card .activity-title { font-size: 14px; color: var(--primary); font-weight: 600; margin-bottom: 6px; line-height: 1.4; }
+    .activity-card .activity-desc { font-size: 13px; color: var(--text-muted); line-height: 1.6; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; }
+    .pagination { display: flex; justify-content: center; align-items: center; gap: 8px; margin-top: 32px; padding-top: 24px; border-top: 1px solid #E2E8F0; flex-wrap: wrap; }
+    .pagination-btn { padding: 8px 16px; border: 1px solid #E2E8F0; background: var(--white); color: var(--text-muted); font-size: 13px; cursor: pointer; transition: all 0.3s ease; min-width: 40px; text-align: center; border-radius: var(--radius); font-family: inherit; }
+    .pagination-btn:hover { background: var(--bg); color: var(--primary); }
+    .pagination-btn.active { background: var(--primary); color: var(--white); border-color: var(--primary); }
+    .pagination-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    .pagination-info { font-size: 13px; color: var(--text-muted); margin: 0 12px; }
+    .pagination-pages { display: flex; gap: 4px; align-items: center; }
+    @media (max-width: 991px) { .activities-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 768px) { .activities-wrap { padding: 24px 16px; } .activities-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div class="prototype-badge">原型 v1.0</div>
+  <header class="header"><div class="header-inner">
+    <a href="index.html" class="logo"><img src="img/logo.png" alt="STARLITE" class="logo-img"><div><div class="logo-text">星光树脂制品（昆山）有限公司</div><div class="logo-sub">Starlite Plastic Products（Kunshan）Co.,Ltd.</div></div></a>
+    <ul class="nav"><li><a href="index.html">首页</a></li><li><a href="innovation.html">创新中心</a></li><li><a href="products.html">产品核心</a></li><li><a href="about.html">关于我们</a></li><li><a href="join.html" class="active">加入我们</a></li><li><a href="contact.html">联系我们</a></li></ul>
+    <div class="lang-switch"><button class="lang-btn active" type="button">中文</button><button class="lang-btn" type="button">EN</button></div>
+  </div></header>
+  <section class="page-hero"><h1>加入我们</h1><p>与 STARLITE 共同成长，创造精彩未来</p></section>
+
+  <section class="section"><div class="section-inner">
+
+    <!-- 人文关怀 -->
+    <div class="welfare-section" id="welfare">
+      <h2 class="section-heading">人文关怀</h2>
+      <p class="section-desc">公司提供完善的宿舍、浴室、和乐园等福利待遇，营造温馨舒适的工作生活环境。住宿配备空调、洗衣机等设施；浴室、更衣室整洁明亮；和乐园供员工业余休憩，处处体现为员工谋福谋利的人文关怀精神。</p>
+      <div class="welfare-wrap">
+        <div class="welfare-vcr">
+          <div class="welfare-vcr-placeholder">
+            <span class="vcr-icon">▶</span>
+            <span>招聘 VCR 画面占位</span>
+            <span style="font-size:12px;opacity:.7">宿舍 · 浴室 · 和乐园等福利待遇场景</span>
+          </div>
+        </div>
+        <div class="welfare-gallery">
+          <div class="welfare-photo-group">
+            <h4 class="welfare-group-title">浴室设施</h4>
+            <div class="welfare-photos">
+              <figure class="welfare-photo">
+                <img src="img/浴室照片_副本/2.jpg" alt="员工浴室入口">
+                <figcaption><strong>浴室入口</strong></figcaption>
+              </figure>
+              <figure class="welfare-photo">
+                <img src="img/浴室照片_副本/8.jpg" alt="淋浴间">
+                <figcaption><strong>淋浴间</strong></figcaption>
+              </figure>
+              <figure class="welfare-photo">
+                <img src="img/浴室照片_副本/女性氛围文化墙2.jpg" alt="女性氛围文化墙">
+                <figcaption><strong>女性氛围文化墙</strong></figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="welfare-photo-group">
+            <h4 class="welfare-group-title">和乐园</h4>
+            <div class="welfare-photos">
+              <figure class="welfare-photo">
+                <img src="img/和乐园照片_副本/昼の写真１.jpg" alt="和乐园日间景观">
+                <figcaption><strong>和乐园</strong></figcaption>
+              </figure>
+              <figure class="welfare-photo">
+                <img src="img/和乐园照片_副本/昼の写真2.jpg" alt="和乐园休憩区">
+                <figcaption><strong>休憩区</strong></figcaption>
+              </figure>
+              <figure class="welfare-photo">
+                <img src="img/和乐园照片_副本/夜の写真1.jpg" alt="和乐园夜景">
+                <figcaption><strong>夜景</strong></figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="join-grid">
+      <div class="join-card" id="training">
+        <div class="join-card-img">📚 员工培训场景<br><span style="font-size:12px">（参考现有网站）</span></div>
+        <div class="join-card-body"><h3>教育培训</h3><p>星光树脂重视人才培养，提供系统的员工培训体系，涵盖专业技能、管理能力、安全环保等多个维度，助力员工职业发展。</p></div>
+      </div>
+    </div>
+
+    <!-- 员工活动 -->
+    <div class="activities-section" id="activities" style="margin-top:48px">
+      <h2 class="section-heading">员工活动</h2>
+      <p class="section-desc">定期组织忘年会、旅游、体育竞赛等丰富多彩的团队活动，增强团队凝聚力，让每位员工感受 STARLITE 大家庭的温暖。</p>
+      <div class="activities-wrap">
+        <div class="activities-grid" id="activities-grid">
+          <div class="activity-card">
+            <div class="activity-image"><div class="cross-line1"></div><div class="cross-line2"></div></div>
+            <div class="activity-content">
+              <div class="activity-date">2020-09-07</div>
+              <div class="activity-title">2020年第三届纳凉节活动</div>
+              <p class="activity-desc">8月29日在公司草坪上举办了星光第三届纳凉节，全体员工出席。董事长通过视频在日本总社向全体员工发来祝福。</p>
+            </div>
+          </div>
+          <div class="activity-card">
+            <div class="activity-image"><div class="cross-line1"></div><div class="cross-line2"></div></div>
+            <div class="activity-content">
+              <div class="activity-date">2020-09-02</div>
+              <div class="activity-title">2020年亲子活动</div>
+              <p class="activity-desc">为了加深亲子之间的沟通交流，体现公司良好的企业文化，公司在8月22日举办了第6届亲子活动。</p>
+            </div>
+          </div>
+          <div class="activity-card">
+            <div class="activity-image"><div class="cross-line1"></div><div class="cross-line2"></div></div>
+            <div class="activity-content">
+              <div class="activity-date">2020-01-17</div>
+              <div class="activity-title">第五届四次员工代表大会</div>
+              <p class="activity-desc">公司第五届四次员工代表大会在公司食堂隆重举行。周市镇总工会领导、公司总经理等65名员工代表参加了本次大会。</p>
+            </div>
+          </div>
+          <div class="activity-card">
+            <div class="activity-image"><div class="cross-line1"></div><div class="cross-line2"></div></div>
+            <div class="activity-content">
+              <div class="activity-date">2020-01-11</div>
+              <div class="activity-title">2019年员工忘年会</div>
+              <p class="activity-desc">星光树脂在昆山市君豪酒店成功举办了2019年员工忘年会。秋野总经理致辞，感谢全体员工的努力。</p>
+            </div>
+          </div>
+          <div class="activity-card">
+            <div class="activity-image"><div class="cross-line1"></div><div class="cross-line2"></div></div>
+            <div class="activity-content">
+              <div class="activity-date">2019-12-24</div>
+              <div class="activity-title">2019年退休人员答谢会</div>
+              <p class="activity-desc">12月24日晚举办了退休人员答谢会。11名员工及公司总经理、副总经理等干部共同参加了答谢会。</p>
+            </div>
+          </div>
+          <div class="activity-card">
+            <div class="activity-image"><div class="cross-line1"></div><div class="cross-line2"></div></div>
+            <div class="activity-content">
+              <div class="activity-date">2019-10-25</div>
+              <div class="activity-title">第二回员工外部培训</div>
+              <p class="activity-desc">10月25日-26日在常熟举办了员工外部培训，公司总经理、副总经理、事业部长等领导参加了培训。</p>
+            </div>
+          </div>
+          <div class="activity-card">
+            <div class="activity-image"><div class="cross-line1"></div><div class="cross-line2"></div></div>
+            <div class="activity-content">
+              <div class="activity-date">2019-10-19</div>
+              <div class="activity-title">2019年亲子活动</div>
+              <p class="activity-desc">公司在10月19日举办了第5届亲子活动，让小朋友们了解爸爸妈妈的工作场所及工作内容。</p>
+            </div>
+          </div>
+          <div class="activity-card">
+            <div class="activity-image"><div class="cross-line1"></div><div class="cross-line2"></div></div>
+            <div class="activity-content">
+              <div class="activity-date">2019-09-24</div>
+              <div class="activity-title">小集团改善活动发表大会</div>
+              <p class="activity-desc">共15个小组参与，经过各部门努力，各事业部选拔后，推荐了6组参加本次发表大会。</p>
+            </div>
+          </div>
+          <div class="activity-card">
+            <div class="activity-image"><div class="cross-line1"></div><div class="cross-line2"></div></div>
+            <div class="activity-content">
+              <div class="activity-date">2019-09-20</div>
+              <div class="activity-title">第五届跳绳比赛活动</div>
+              <p class="activity-desc">精密化成品事业部5个组、高机能品事业部1个组、共通部门1个组，共7个组参加了比赛。</p>
+            </div>
+          </div>
+          <div class="activity-card">
+            <div class="activity-image"><div class="cross-line1"></div><div class="cross-line2"></div></div>
+            <div class="activity-content">
+              <div class="activity-date">2019-07-17</div>
+              <div class="activity-title">社内日语培训班开课</div>
+              <p class="activity-desc">为让员工深入了解公司文化，方便中日员工沟通交流，日语培训班火热开课，18名员工积极参加。</p>
+            </div>
+          </div>
+          <div class="activity-card">
+            <div class="activity-image"><div class="cross-line1"></div><div class="cross-line2"></div></div>
+            <div class="activity-content">
+              <div class="activity-date">2019-06-21</div>
+              <div class="activity-title">第一回员工外部培训</div>
+              <p class="activity-desc">6月21日-22日在苏州举办员工外部培训，各事业部不同层次员工参加，总经理带队。</p>
+            </div>
+          </div>
+          <div class="activity-card">
+            <div class="activity-image"><div class="cross-line1"></div><div class="cross-line2"></div></div>
+            <div class="activity-content">
+              <div class="activity-date">2019-03-08</div>
+              <div class="activity-title">三八妇女节庆祝活动</div>
+              <p class="activity-desc">公司工会在酒店举行了庆祝活动，55位女干部代表参加，并邀请了日方干部、男干部们一起参加。</p>
+            </div>
+          </div>
+        </div>
+        <div class="pagination" id="activities-pagination">
+          <button class="pagination-btn" id="act-prev-page" disabled>上一页</button>
+          <div class="pagination-pages" id="act-pagination-pages"></div>
+          <button class="pagination-btn" id="act-next-page">下一页</button>
+          <span class="pagination-info" id="act-pagination-info">第 1 页 / 共 1 页</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 招贤纳士 -->
+    <div class="careers-section" id="careers">
+      <div class="careers-wrap">
+        <div class="careers-hero">
+          <h3>招贤纳士</h3>
+          <p class="hero-desc">星光树脂诚邀优秀人才加入，我们提供具有竞争力的薪酬福利和广阔的发展空间。</p>
+          <div class="careers-links">
+            <a href="https://www.51job.com" target="_blank" rel="noopener" class="btn">查看招聘职位</a>
+          </div>
+         </div>
+      </div>
+    </div>
+
+  </div></section>
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="footer-brand-head">
+          <img src="img/logo.png" alt="STARLITE" class="footer-brand-logo">
+          <div>
+            <div class="footer-brand-cn">星光树脂</div>
+            <div class="footer-brand-en">Starlite Plastic Products</div>
+          </div>
+        </a>
+        <ul class="footer-brand-list">
+          <li><span class="footer-brand-icon">📞</span><span><br>+86-512-57641220 · 传真 +86-512-57641211</span></li>
+          <li><span class="footer-brand-icon">📍</span><span>江苏省昆山市周市镇陆杨迎宾西路2号 · 邮编 215313</span></li>
+          <li class="footer-brand-divider"><span class="footer-brand-icon">📞</span><span><strong>星光工业株式会社</strong><br>+816-6956-2240 · <a href="https://starlite.co.jp/" target="_blank" rel="noopener">starlite.co.jp</a></span></li>
+          <li><span class="footer-brand-icon">📍</span><span>日本国大阪府大阪市旭区大宫4丁目23番7号 · 邮编 535-0002</span></li>
+        </ul>
+      </div>
+      <div class="footer-nav">
+        <div class="footer-col">
+          <h4>首页</h4>
+          <ul>
+            <li><a href="index.html#intro">企业简介</a></li>
+            <li><a href="index.html#history">发展历程</a></li>
+            <li><a href="index.html#logo">品牌标识解说</a></li>
+            <li><a href="index.html#vision">理念&愿景&使命</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>创新中心</h4>
+          <ul>
+            <li><a href="innovation.html#timeline">摩擦学技术开发轨迹</a></li>
+            <li><a href="innovation.html#tribology">STARLITE 摩擦学技术理念</a></li>
+            <li><a href="innovation.html#partner">技术开发型商务伙伴</a></li>
+            <li><a href="innovation.html#equipment">试验分析仪器&检测设备</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>产品核心</h4>
+          <ul>
+            <li><a href="products.html#bakes">热固性树脂（BAKES®）性能</a></li>
+            <li><a href="products.html#alp">热固性树脂（ALP®）性能</a></li>
+            <li><a href="products.html#sbear">热塑性树脂（S-BEAR®）性能</a></li>
+            <li><a href="products.html#biomass">非食用生物质摩擦材料</a></li>
+            <li><a href="products.html#other">暑热灾害对策用产品及其他事业</a></li>
+            <li><a href="products.html#clients">合作客户</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>关于我们</h4>
+          <ul>
+            <li><a href="about.html#honors">企业荣誉</a></li>
+            <li><a href="about.html#cert">认证资质</a></li>
+            <li><a href="about.html#sustain">可持续发展</a></li>
+            <li><a href="about.html#news">企业动态</a></li>
+            <li><a href="about.html#social">社会贡献</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>加入我们</h4>
+          <ul>
+            <li><a href="join.html#welfare">人文关怀</a></li>
+            <li><a href="join.html#training">教育培训</a></li>
+            <li><a href="join.html#activities">员工活动</a></li>
+            <li><a href="join.html#careers">招贤纳士</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>联系我们</h4>
+          <ul>
+            <li><a href="contact.html#info">联系方式</a></li>
+            <li><a href="contact.html#map">电子地图</a></li>
+            <li><a href="contact.html#message">客户留言</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 星光树脂制品（昆山）有限公司 · 网站原型</div>
+  </footer>
+<script>
+document.querySelectorAll('.lang-switch').forEach(function(s){s.querySelectorAll('.lang-btn').forEach(function(b){b.addEventListener('click',function(){s.querySelectorAll('.lang-btn').forEach(function(x){x.classList.remove('active')});b.classList.add('active')})})});
+
+// 员工活动分页
+(function() {
+  var activityItems = document.querySelectorAll('#activities-grid .activity-card');
+  var actTotalItems = activityItems.length;
+  var actItemsPerPage = 6;
+  var actCurrentPage = 1;
+  var actTotalPages = Math.ceil(actTotalItems / actItemsPerPage);
+  var actPrevBtn = document.getElementById('act-prev-page');
+  var actNextBtn = document.getElementById('act-next-page');
+  var actPagesContainer = document.getElementById('act-pagination-pages');
+  var actPaginationInfo = document.getElementById('act-pagination-info');
+
+  function showActPage(page) {
+    actCurrentPage = page;
+    var start = (page - 1) * actItemsPerPage;
+    var end = start + actItemsPerPage;
+    activityItems.forEach(function(item, index) {
+      item.style.display = (index >= start && index < end) ? 'block' : 'none';
+    });
+    actPrevBtn.disabled = page === 1;
+    actNextBtn.disabled = page === actTotalPages;
+    actPaginationInfo.textContent = '第 ' + page + ' 页 / 共 ' + actTotalPages + ' 页（共 ' + actTotalItems + ' 条）';
+    renderActPageNumbers();
+  }
+
+  function renderActPageNumbers() {
+    if (!actPagesContainer) return;
+    actPagesContainer.innerHTML = '';
+    var startPage = Math.max(1, actCurrentPage - 2);
+    var endPage = Math.min(actTotalPages, actCurrentPage + 2);
+    if (endPage - startPage < 4) {
+      if (startPage === 1) endPage = Math.min(actTotalPages, startPage + 4);
+      else if (endPage === actTotalPages) startPage = Math.max(1, endPage - 4);
+    }
+    if (startPage > 1) {
+      addActPageBtn(1);
+      if (startPage > 2) {
+        var dots = document.createElement('span');
+        dots.textContent = '...';
+        dots.style.padding = '0 8px';
+        dots.style.color = 'var(--text-muted)';
+        actPagesContainer.appendChild(dots);
+      }
+    }
+    for (var i = startPage; i <= endPage; i++) addActPageBtn(i);
+    if (endPage < actTotalPages) {
+      if (endPage < actTotalPages - 1) {
+        var dots2 = document.createElement('span');
+        dots2.textContent = '...';
+        dots2.style.padding = '0 8px';
+        dots2.style.color = 'var(--text-muted)';
+        actPagesContainer.appendChild(dots2);
+      }
+      addActPageBtn(actTotalPages);
+    }
+  }
+
+  function addActPageBtn(page) {
+    var btn = document.createElement('button');
+    btn.className = 'pagination-btn' + (page === actCurrentPage ? ' active' : '');
+    btn.textContent = page;
+    btn.addEventListener('click', function() { showActPage(page); });
+    actPagesContainer.appendChild(btn);
+  }
+
+  if (actTotalItems > 0) showActPage(1);
+  if (actPrevBtn) actPrevBtn.addEventListener('click', function() { if (actCurrentPage > 1) showActPage(actCurrentPage - 1); });
+  if (actNextBtn) actNextBtn.addEventListener('click', function() { if (actCurrentPage < actTotalPages) showActPage(actCurrentPage + 1); });
+})();
+
+</script>
+</body>
+</html>
