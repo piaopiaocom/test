@@ -12,7 +12,7 @@
     .logo{display:flex;align-items:center;gap:12px}.logo-img{height:48px;width:auto;object-fit:contain;display:block}
     .logo-text{font-size:15px;line-height:1.3;font-weight:700;color:var(--primary)}.logo-sub{font-size:10px;line-height:1.3;color:var(--text-muted)}
     [id]{scroll-margin-top:88px}
-    .nav{display:flex;gap:4px;align-items:stretch}.nav>li{list-style:none;position:relative}.nav>li>a{display:flex;align-items:center;height:72px;padding:0 16px;font-size:14px;color:var(--text);position:relative;transition:color .25s ease;white-space:nowrap}.nav>li>a::after{content:'';position:absolute;left:16px;right:16px;bottom:0;height:2px;background:var(--primary);border-radius:1px 1px 0 0;transform:scaleX(0);transition:transform .25s ease}.nav>li>a:hover,.nav>li>a.active,.nav>li:hover>a{color:var(--primary)}.nav>li>a:hover::after,.nav>li>a.active::after,.nav>li:hover>a::after{transform:scaleX(1)}.nav-dropdown{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(8px);min-width:168px;background:var(--white);border-radius:var(--radius);box-shadow:0 8px 32px rgba(11,45,91,0.12),0 2px 8px rgba(0,0,0,0.06);border:1px solid var(--border,#E2E8F0);padding:6px 0;opacity:0;visibility:hidden;transition:opacity .2s ease,transform .2s ease,visibility .2s;z-index:1001;list-style:none}.nav-dropdown::before{content:'';position:absolute;top:-10px;left:0;right:0;height:10px}.nav>li:hover>.nav-dropdown{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}.nav-dropdown li{list-style:none}.nav-dropdown a{display:block;padding:10px 20px;font-size:13px;color:var(--text-muted);transition:color .15s ease,background .15s ease;white-space:nowrap}.nav-dropdown a:hover{color:var(--primary);background:rgba(11,45,91,0.04)}
+    .nav{display:flex;gap:4px;align-items:stretch}.nav>li{list-style:none;position:relative}.nav>li>a{display:flex;align-items:center;height:72px;padding:0 16px;font-size:14px;color:var(--text);position:relative;transition:color .25s ease;white-space:nowrap;line-height:1}.nav>li>a::after{content:'';position:absolute;left:16px;right:16px;bottom:0;height:2px;background:var(--primary);border-radius:1px 1px 0 0;transform:scaleX(0);transition:transform .25s ease}.nav>li>a:hover,.nav>li>a.active,.nav>li:hover>a{color:var(--primary)}.nav>li>a:hover::after,.nav>li>a.active::after,.nav>li:hover>a::after{transform:scaleX(1)}.nav-dropdown{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(8px);min-width:240px;background:var(--white);border-radius:var(--radius);box-shadow:0 8px 32px rgba(11,45,91,0.12),0 2px 8px rgba(0,0,0,0.06);border:1px solid var(--border,#E2E8F0);padding:6px 0;opacity:0;visibility:hidden;transition:opacity .2s ease,transform .2s ease,visibility .2s;z-index:1001;list-style:none}.nav-dropdown::before{content:'';position:absolute;top:-10px;left:0;right:0;height:10px}.nav>li:hover>.nav-dropdown{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}.nav-dropdown li{list-style:none}.nav-dropdown a{display:block;padding:10px 20px;font-size:13px;color:var(--text-muted);transition:color .15s ease,background .15s ease;white-space:normal;line-height:1.45}.nav-dropdown a:hover{color:var(--primary);background:rgba(11,45,91,0.04)}
     .page-hero{background:linear-gradient(135deg,var(--primary),var(--primary-light));padding:64px 24px;color:var(--white);text-align:center}.page-hero h1{font-size:36px;margin-bottom:8px}
     .section{padding:64px 24px}.section-inner{max-width:1280px;margin:0 auto}
     .join-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:32px}
@@ -122,28 +122,28 @@
         <ul class="nav-dropdown">
           <li><a href="index.html#intro">企业简介</a></li>
           <li><a href="index.html#history">发展历程</a></li>
-          <li><a href="index.html#logo">品牌标识</a></li>
-          <li><a href="index.html#vision">企业愿景</a></li>
+          <li><a href="index.html#logo">品牌标识解说</a></li>
+          <li><a href="index.html#vision">理念 & 愿景 & 使命</a></li>
         </ul>
       </li>
       <li>
         <a href="innovation.html">创新中心</a>
         <ul class="nav-dropdown">
-          <li><a href="innovation.html#timeline">发展里程碑</a></li>
-          <li><a href="innovation.html#tribology">摩擦学技术</a></li>
-          <li><a href="innovation.html#partner">合作伙伴</a></li>
-          <li><a href="innovation.html#equipment">生产设备</a></li>
+          <li><a href="innovation.html#timeline">星光集团摩擦学技术开发轨迹</a></li>
+          <li><a href="innovation.html#tribology">STARLITE 摩擦学技术理念</a></li>
+          <li><a href="innovation.html#partner">技术开发型商务伙伴</a></li>
+          <li><a href="innovation.html#equipment">试验分析仪器 & 摩擦学检测设备</a></li>
         </ul>
       </li>
       <li>
         <a href="products.html">产品核心</a>
         <ul class="nav-dropdown">
-          <li><a href="products.html#bakes">热固性树脂（BAKES®）</a></li>
-          <li><a href="products.html#alp">ALP 系列</a></li>
-          <li><a href="products.html#sbear">SBear 系列</a></li>
-          <li><a href="products.html#biomass">生物质材料</a></li>
-          <li><a href="products.html#other">其他产品</a></li>
-          <li><a href="products.html#clients">主要客户</a></li>
+          <li><a href="products.html#bakes">热固性树脂（BAKES®）性能</a></li>
+          <li><a href="products.html#alp">热固性树脂（ALP®）性能</a></li>
+          <li><a href="products.html#sbear">热塑性树脂（S-BEAR®）性能</a></li>
+          <li><a href="products.html#biomass">非食用生物质摩擦材料</a></li>
+          <li><a href="products.html#other">暑热灾害对策用产品及其他事业</a></li>
+          <li><a href="products.html#clients">合作客户</a></li>
         </ul>
       </li>
       <li>
@@ -160,9 +160,9 @@
         <a href="join.html" class="active">加入我们</a>
         <ul class="nav-dropdown">
           <li><a href="join.html#welfare">人文关怀</a></li>
-          <li><a href="join.html#training">培训发展</a></li>
+          <li><a href="join.html#training">教育培训</a></li>
           <li><a href="join.html#activities">员工活动</a></li>
-          <li><a href="join.html#careers">招聘信息</a></li>
+          <li><a href="join.html#careers">招贤纳士</a></li>
         </ul>
       </li>
       <li>
@@ -180,8 +180,8 @@
   <section class="section"><div class="section-inner">
 
     <!-- 人文关怀 -->
-    <div class="welfare-section" id="welfare">
-      <h2 class="section-heading">人文关怀</h2>
+    <div class="welfare-section">
+      <h2 class="section-heading" id="welfare">人文关怀</h2>
       <p class="section-desc">公司提供完善的宿舍、浴室、和乐园等福利待遇，营造温馨舒适的工作生活环境。住宿配备空调、洗衣机等设施；浴室、更衣室整洁明亮；和乐园供员工业余休憩，处处体现为员工谋福谋利的人文关怀精神。</p>
       <div class="welfare-wrap">
         <div class="welfare-vcr">
@@ -231,15 +231,15 @@
     </div>
 
     <div class="join-grid">
-      <div class="join-card" id="training">
+      <div class="join-card">
         <div class="join-card-img">📚 员工培训场景<br><span style="font-size:12px">（参考现有网站）</span></div>
-        <div class="join-card-body"><h3>教育培训</h3><p>星光树脂重视人才培养，提供系统的员工培训体系，涵盖专业技能、管理能力、安全环保等多个维度，助力员工职业发展。</p></div>
+        <div class="join-card-body"><h3 id="training">教育培训</h3><p>星光树脂重视人才培养，提供系统的员工培训体系，涵盖专业技能、管理能力、安全环保等多个维度，助力员工职业发展。</p></div>
       </div>
     </div>
 
     <!-- 员工活动 -->
-    <div class="activities-section" id="activities" style="margin-top:48px">
-      <h2 class="section-heading">员工活动</h2>
+    <div class="activities-section" style="margin-top:48px">
+      <h2 class="section-heading" id="activities">员工活动</h2>
       <p class="section-desc">定期组织忘年会、旅游、体育竞赛等丰富多彩的团队活动，增强团队凝聚力，让每位员工感受 STARLITE 大家庭的温暖。</p>
       <div class="activities-wrap">
         <div class="activities-grid" id="activities-grid">
@@ -350,10 +350,10 @@
     </div>
 
     <!-- 招贤纳士 -->
-    <div class="careers-section" id="careers">
+    <div class="careers-section">
       <div class="careers-wrap">
         <div class="careers-hero">
-          <h3>招贤纳士</h3>
+          <h3 id="careers">招贤纳士</h3>
           <p class="hero-desc">星光树脂诚邀优秀人才加入，我们提供具有竞争力的薪酬福利和广阔的发展空间。</p>
           <div class="careers-links">
             <a href="https://www.51job.com" target="_blank" rel="noopener" class="btn">查看招聘职位</a>

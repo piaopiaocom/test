@@ -19,15 +19,15 @@
     .logo-sub { font-size:10px; line-height:1.3; color:var(--text-muted); font-weight:400; }
     .nav { display:flex; gap:4px; align-items:stretch; }
     .nav > li { list-style:none; position:relative; }
-    .nav > li > a { display:flex; align-items:center; height:72px; padding:0 16px; font-size:14px; color:var(--text); position:relative; transition:color .25s ease; white-space:nowrap; }
+    .nav > li > a { display:flex; align-items:center; height:72px; padding:0 16px; font-size:14px; color:var(--text); position:relative; transition:color .25s ease; white-space:nowrap;line-height:1; }
     .nav > li > a::after { content:''; position:absolute; left:16px; right:16px; bottom:0; height:2px; background:var(--primary); border-radius:1px 1px 0 0; transform:scaleX(0); transition:transform .25s ease; }
     .nav > li > a:hover, .nav > li > a.active, .nav > li:hover > a { color:var(--primary); }
     .nav > li > a:hover::after, .nav > li > a.active::after, .nav > li:hover > a::after { transform:scaleX(1); }
-    .nav-dropdown { position:absolute; top:100%; left:50%; transform:translateX(-50%) translateY(8px); min-width:168px; background:var(--white); border-radius:var(--radius); box-shadow:0 8px 32px rgba(11,45,91,0.12),0 2px 8px rgba(0,0,0,0.06); border:1px solid var(--border); padding:6px 0; opacity:0; visibility:hidden; transition:opacity .2s ease,transform .2s ease,visibility .2s; z-index:1001; list-style:none; }
+    .nav-dropdown { position:absolute; top:100%; left:50%; transform:translateX(-50%) translateY(8px); min-width:240px; background:var(--white); border-radius:var(--radius); box-shadow:0 8px 32px rgba(11,45,91,0.12),0 2px 8px rgba(0,0,0,0.06); border:1px solid var(--border); padding:6px 0; opacity:0; visibility:hidden; transition:opacity .2s ease,transform .2s ease,visibility .2s; z-index:1001; list-style:none; }
     .nav-dropdown::before { content:''; position:absolute; top:-10px; left:0; right:0; height:10px; }
     .nav > li:hover > .nav-dropdown { opacity:1; visibility:visible; transform:translateX(-50%) translateY(0); }
     .nav-dropdown li { list-style:none; }
-    .nav-dropdown a { display:block; padding:10px 20px; font-size:13px; color:var(--text-muted); transition:color .15s ease,background .15s ease; white-space:nowrap; }
+    .nav-dropdown a { display:block; padding:10px 20px; font-size:13px; color:var(--text-muted); transition:color .15s ease,background .15s ease; white-space:nowrap;line-height:1; }
     .nav-dropdown a:hover { color:var(--primary); background:rgba(11,45,91,0.04); }
     .lang-switch { display:flex; border:1px solid var(--border); border-radius:20px; overflow:hidden; flex-shrink:0; }
     .lang-btn { padding:6px 14px; font-size:13px; border:none; background:transparent; color:var(--text-muted); cursor:pointer; font-family:inherit; transition:all .2s; }
@@ -97,7 +97,7 @@
     .equip-group:last-child { margin-bottom:0; }
     .equip-group-head { display:flex; align-items:flex-end; justify-content:space-between; gap:16px; margin-bottom:24px; padding-bottom:16px; border-bottom:3px solid var(--primary); }
     .equip-group-head h3 { font-size:22px; font-weight:700; color:var(--primary); line-height:1.3; }
-    .equip-group-count { font-size:14px; color:var(--text-muted); white-space:nowrap; }
+    .equip-group-count { font-size:14px; color:var(--text-muted); white-space:nowrap;line-height:1; }
     .equip-group-count strong { color:var(--accent); font-size:20px; font-weight:700; margin-right:4px; }
     .equip-cards { display:grid; grid-template-columns:repeat(12,1fr); gap:24px; }
     .equip-cards:not(:has(.equip-card:nth-child(4))) { grid-template-columns:repeat(3,1fr); }
@@ -131,7 +131,7 @@
     .h-timeline-dot::before { content:""; position:absolute; left:50%; transform:translateX(-50%); width:2px; background:var(--accent); opacity:.45; }
     .h-timeline-item.is-top .h-timeline-dot::before { bottom:100%; height:20px; margin-bottom:2px; }
     .h-timeline-item.is-bottom .h-timeline-dot::before { top:100%; height:20px; margin-top:2px; }
-    .h-timeline-year { position:absolute; left:50%; transform:translateX(-50%); font-size:14px; font-weight:700; color:var(--primary); white-space:nowrap; text-align:center; }
+    .h-timeline-year { position:absolute; left:50%; transform:translateX(-50%); font-size:14px; font-weight:700; color:var(--primary); white-space:nowrap;line-height:1; text-align:center; }
     .h-timeline-item.is-top .h-timeline-year { top:calc(240px + 22px); }
     .h-timeline-item.is-bottom .h-timeline-year { bottom:calc(480px - 240px + 22px); }
     .h-timeline-bubble { position:absolute; left:50%; transform:translateX(-50%); width:228px; background:var(--white); border-radius:14px; padding:16px 18px; box-shadow:var(--shadow); border:1px solid rgba(11,45,91,.08); }
@@ -146,7 +146,7 @@
     .h-timeline-list::-webkit-scrollbar-thumb { background:var(--border); border-radius:2px; }
     .h-timeline-list li { font-size:12px; color:var(--text-muted); padding:5px 0 5px 12px; position:relative; line-height:1.6; }
     .h-timeline-list li::before { content:""; position:absolute; left:0; top:11px; width:4px; height:4px; background:var(--accent); border-radius:50%; }
-    .era-badge { display:inline-block; background:rgba(197,160,54,.15); color:var(--accent); font-size:10px; padding:1px 6px; border-radius:8px; font-weight:600; margin-left:2px; white-space:nowrap; }
+    .era-badge { display:inline-block; background:rgba(197,160,54,.15); color:var(--accent); font-size:10px; padding:1px 6px; border-radius:8px; font-weight:600; margin-left:2px; white-space:nowrap;line-height:1; }
     .footer { background:linear-gradient(180deg,#0c2f5c 0%,#071E3D 100%); color:rgba(255,255,255,.78); padding:56px 24px 28px; }
     .footer-inner { max-width:1280px; margin:0 auto; display:grid; grid-template-columns:minmax(280px,340px) 1fr; gap:48px 56px; align-items:start; }
     .footer-brand-head { display:flex; align-items:center; gap:14px; margin-bottom:20px; }
@@ -225,28 +225,28 @@
           <ul class="nav-dropdown">
             <li><a href="index.html#intro">企业简介</a></li>
             <li><a href="index.html#history">发展历程</a></li>
-            <li><a href="index.html#logo">品牌标识</a></li>
-            <li><a href="index.html#vision">企业愿景</a></li>
+            <li><a href="index.html#logo">品牌标识解说</a></li>
+            <li><a href="index.html#vision">理念 & 愿景 & 使命</a></li>
           </ul>
         </li>
         <li>
           <a href="innovation.html" class="active">创新中心</a>
           <ul class="nav-dropdown">
-            <li><a href="innovation.html#timeline">发展里程碑</a></li>
-            <li><a href="innovation.html#tribology">摩擦学技术</a></li>
-            <li><a href="innovation.html#partner">合作伙伴</a></li>
-            <li><a href="innovation.html#equipment">生产设备</a></li>
+            <li><a href="innovation.html#timeline">星光集团摩擦学技术开发轨迹</a></li>
+            <li><a href="innovation.html#tribology">STARLITE 摩擦学技术理念</a></li>
+            <li><a href="innovation.html#partner">技术开发型商务伙伴</a></li>
+            <li><a href="innovation.html#equipment">试验分析仪器 & 摩擦学检测设备</a></li>
           </ul>
         </li>
         <li>
           <a href="products.html">产品核心</a>
           <ul class="nav-dropdown">
-            <li><a href="products.html#bakes">热固性树脂（BAKES®）</a></li>
-            <li><a href="products.html#alp">ALP 系列</a></li>
-            <li><a href="products.html#sbear">SBear 系列</a></li>
-            <li><a href="products.html#biomass">生物质材料</a></li>
-            <li><a href="products.html#other">其他产品</a></li>
-            <li><a href="products.html#clients">主要客户</a></li>
+            <li><a href="products.html#bakes">热固性树脂（BAKES®）性能</a></li>
+            <li><a href="products.html#alp">热固性树脂（ALP®）性能</a></li>
+            <li><a href="products.html#sbear">热塑性树脂（S-BEAR®）性能</a></li>
+            <li><a href="products.html#biomass">非食用生物质摩擦材料</a></li>
+            <li><a href="products.html#other">暑热灾害对策用产品及其他事业</a></li>
+            <li><a href="products.html#clients">合作客户</a></li>
           </ul>
         </li>
         <li>
@@ -263,9 +263,9 @@
           <a href="join.html">加入我们</a>
           <ul class="nav-dropdown">
             <li><a href="join.html#welfare">人文关怀</a></li>
-            <li><a href="join.html#training">培训发展</a></li>
+            <li><a href="join.html#training">教育培训</a></li>
             <li><a href="join.html#activities">员工活动</a></li>
-            <li><a href="join.html#careers">招聘信息</a></li>
+            <li><a href="join.html#careers">招贤纳士</a></li>
           </ul>
         </li>
         <li>
@@ -286,10 +286,10 @@
   </section>
 
   <!-- 摩擦学技术开发轨迹 -->
-  <section class="section section-alt" id="timeline">
+  <section class="section section-alt">
     <div class="section-inner">
       <div class="section-header">
-        <h2 class="section-title">星光集团摩擦学技术开发轨迹</h2>
+        <h2 class="section-title" id="timeline">星光集团摩擦学技术开发轨迹</h2>
         <p class="section-desc">从1936年星光工业成立至今，近90年持续创新的完整技术发展历程</p>
       </div>
       <div class="h-timeline-wrap">
@@ -429,10 +429,10 @@
   </section>
 
   <!-- 摩擦学技术理念 -->
-  <section class="section" id="tribology">
+  <section class="section">
     <div class="section-inner">
       <div class="section-header">
-        <h2 class="section-title">STARLITE 摩擦学技术理念</h2>
+        <h2 class="section-title" id="tribology">STARLITE 摩擦学技术理念</h2>
         <p class="section-desc">STARLITE 始终以摩擦学为核心，在材料领域持续深耕。我们不局限于单一塑料材质，而是通过多元材料复合的「造物」理念，与兼顾可持续发展的「成事」理念，不断升级以「滑动、制动、防护、密封」为核心的技术与服务，为客户创造更环保、更高效、更安全的解决方案。</p>
       </div>
       <div class="pillars">
@@ -479,10 +479,10 @@
   </section>
 
   <!-- 技术开发型商务伙伴 -->
-  <section class="section section-alt" id="partner">
+  <section class="section section-alt">
     <div class="section-inner">
       <div class="section-header">
-        <h2 class="section-title">技术开发型商务伙伴</h2>
+        <h2 class="section-title" id="partner">技术开发型商务伙伴</h2>
         <p class="section-desc">基于摩擦学技术，我们提供材料开发到成型加工工艺，以及运用摩擦学实验设备进行材料分析和产品的设计与评估全链条解决方案。STARLITE 拥有大量深耕塑料与摩擦学领域的技术、研发人员，始终致力于响应广大客户的多样化需求，以技术开发型商业合作伙伴的身份引领行业前沿发展。</p>
       </div>
       <div class="partner-chain-visual">
@@ -547,10 +547,10 @@
   </section>
 
   <!-- 试验分析仪器 & 检测设备 -->
-  <section class="section" id="equipment">
+  <section class="section">
     <div class="section-inner">
       <div class="section-header">
-        <h2 class="section-title">试验分析仪器 & 摩擦学检测设备</h2>
+        <h2 class="section-title" id="equipment">试验分析仪器 & 摩擦学检测设备</h2>
         <p class="section-desc">星光依托各类摩擦学检测设备及材料分析仪器，开展塑料滑动材料的研发工作。</p>
       </div>
 
